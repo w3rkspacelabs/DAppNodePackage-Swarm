@@ -11,7 +11,8 @@ jobs:
       - uses: actions/setup-node@v1
 
       - name: Bump upstream version
-        run: sed -i "s/        UPSTREAM_VERSION: .*/        UPSTREAM_VERSION: ${{  github.event.client_payload.tag }}/g" docker-compose.yml
+        run: |
+          sed -i "s/        UPSTREAM_VERSION: .*/        UPSTREAM_VERSION: ${{  github.event.client_payload.tag }}/g" docker-compose.yml
 
       - name: dappnodesdk publish
         run: npx @dappnode/dappnodesdk publish patch --dappnode_team_preset --timeout 2h
