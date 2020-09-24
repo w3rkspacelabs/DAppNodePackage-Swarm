@@ -1,0 +1,34 @@
+{
+  "0.3.0": {
+    "hash": "/ipfs/QmVGmkHApbJPTpQkDhitVXsTCDFJhQN64Q43XXGzA6CByd",
+    "type": "directory",
+    "uploadedTo": {
+      "dappnode": "Sun, 24 Nov 2019 07:05:48 GMT"
+    },
+    "link": "http://my.dappnode/#/sdk/publish/r=swarm.dnp.dappnode.eth&v=0.3.0&h=%2Fipfs%2FQmVGmkHApbJPTpQkDhitVXsTCDFJhQN64Q43XXGzA6CByd"
+  },
+  "0.3.2": {
+    "hash": "/ipfs/QmaUbyiqb8SX3ANmGCZpVBbtZVKYk4eaB4U93H3FfhbVie",
+    "type": "directory",
+    "uploadedTo": {
+      "dappnode": "Wed, 05 Feb 2020 15:53:57 GMT"
+    },
+    "link": "http://my.dappnode/#/sdk/publish/r=swarm.dnp.dappnode.eth&v=0.3.2&h=%2Fipfs%2FQmaUbyiqb8SX3ANmGCZpVBbtZVKYk4eaB4U93H3FfhbVie"
+  },
+  "1.0.0": {
+    "hash": "/ipfs/QmWdfDnHmtvVomyWNbZij54EqhbMgnq3QCdqvmREk7E96L",
+    "type": "directory",
+    "uploadedTo": {
+      "dappnode": "Mon, 29 Jun 2020 14:41:46 GMT"
+    }
+  },
+  "0.1.0": {
+    "hash": "/ipfs/QmYMfSr1Y4NozQLA9Xxi1D5rebbULWbT2TKqPv2WbuQqJk",
+    "type": "directory",
+    "uploadedTo": {
+      "remote": "Thu, 24 Sep 2020 10:43:24 GMT",
+      "dappnode": "Thu, 24 Sep 2020 10:46:13 GMT"
+    },
+    "link": "http://my.dappnode/#/sdk/publish/r=bee.dnp.dappnode.eth&v=0.1.0&h=%2Fipfs%2FQmRwG3ECTH87yo884AhivGLb3hoHqKuHEWwJeEiX99QRYL&d=0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
+  }
+}
