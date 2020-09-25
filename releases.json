@@ -32,10 +32,10 @@
     "link": "http://my.dappnode/#/sdk/publish/r=bee.dnp.dappnode.eth&v=0.1.0&h=%2Fipfs%2FQmRwG3ECTH87yo884AhivGLb3hoHqKuHEWwJeEiX99QRYL&d=0xF35960302a07022aBa880DFFaEC2Fdd64d5BF1c1"
   },
   "0.1.2": {
-    "hash": "/ipfs/QmTpmqFfAtiKGCaJeCd8vZfkNPhoBggMkWB6UggawBtKuF",
+    "hash": "/ipfs/QmeKcQ8CYpEK7yWU9CJ1LtaWeYMo6YWEo14K5EB1DsyiFu",
     "uploadedTo": {
-      "http://ipfs.dappnode.io": "Fri, 25 Sep 2020 00:38:09 GMT"
+      "http://ipfs.dappnode.io": "Fri, 25 Sep 2020 12:26:28 GMT"
     },
-    "link": "https://dappnode.github.io/sdk-publish/?r=bee.dnp.dappnode.eth&v=0.1.2&h=%2Fipfs%2FQmTpmqFfAtiKGCaJeCd8vZfkNPhoBggMkWB6UggawBtKuF"
+    "link": "https://dappnode.github.io/sdk-publish/?r=bee.dnp.dappnode.eth&v=0.1.2&h=%2Fipfs%2FQmeKcQ8CYpEK7yWU9CJ1LtaWeYMo6YWEo14K5EB1DsyiFu"
   }
 }
