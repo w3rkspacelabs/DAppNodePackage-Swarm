@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   bee.dnp.dappnode.eth:
-    image: 'bee.dnp.dappnode.eth:0.1.0'
+    image: 'bee.dnp.dappnode.eth:0.1.3'
     build:
       context: ./build
       args:
