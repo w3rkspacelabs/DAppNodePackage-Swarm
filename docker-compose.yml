@@ -12,6 +12,7 @@ services:
       - 'bee:/home/bee/.bee'
     environment:
       - PASSWORD
+      - 'BEE_SWAP_ENDPOINT=https://rpc.slock.it/goerli'
       - EXTRA_OPTS
     restart: always
 volumes:

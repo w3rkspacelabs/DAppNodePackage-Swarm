@@ -14,4 +14,4 @@ echo $VERSION
 
 echo $PASSWORD > /home/bee/.password
 
-exec bee start --config /home/bee/config.yml $EXTRA_OPTS $@ 2>&1
+exec bee start --swap-endpoint https://rpc.slock.it/goerli --config /home/bee/config.yml $EXTRA_OPTS $@ 2>&1
