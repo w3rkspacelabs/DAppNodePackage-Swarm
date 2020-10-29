@@ -1,0 +1,17 @@
+version: "2"
+fields:
+  - title: Swap Endpoint
+    id: swap-endpoint
+    description: swap ethereum blockchain endpoint. By default `https://rpc.slock.it/goerli` but you can use your own node if you're currently running
+    target:
+      type: environment
+      name: BEE_SWAP_ENDPOINT
+    required: true
+  - title: Password
+    id: password
+    description: It is important to choose a strong unique password, as this will protect your valuable private key which is generated during startup
+    target:
+      type: environment
+      name: PASSWORD
+    required: true
+    secret: true
