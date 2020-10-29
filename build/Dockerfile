@@ -18,7 +18,11 @@ RUN apk add --update pwgen bash wget && \
   chmod +x /usr/local/bin/bee 
 
 RUN addgroup -g 1000 bee \
-  && adduser -u 1000 -G bee -s /bin/sh -D bee
+  && adduser -u 1000 -G bee -s /bin/sh -D bee && \
+  mkdir -p /home/bee/.bee && \
+  chown -R bee:bee /home/bee
+
+VOLUME /home/bee
 
 USER bee
 
