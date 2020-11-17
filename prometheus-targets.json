@@ -1,8 +1,8 @@
 [
     {
       "labels": {
-        "job": "cadvisor"
+        "job": "bee"
       },
-      "targets": ["dappnode-bee.dappnode:6060/metrics"]
+      "targets": ["bee.dappnode:6060"]
     }
   ]
