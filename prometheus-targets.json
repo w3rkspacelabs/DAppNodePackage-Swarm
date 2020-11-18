@@ -1,0 +1,8 @@
+[
+    {
+      "labels": {
+        "job": "bee"
+      },
+      "targets": ["bee.dappnode:6060"]
+    }
+  ]
