@@ -1055,7 +1055,6 @@
       ]
     },
     "timezone": "",
-    "title": "Bee dashboard",
-    "uid": "bee-dashboard",
-    "version": 1
+    "title": "Bee",
+    "uid": "bee"
   }
