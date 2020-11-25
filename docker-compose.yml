@@ -1,18 +1,18 @@
-version: '3.4'
+version: "3.4"
 services:
   bee.dnp.dappnode.eth:
-    image: 'bee.dnp.dappnode.eth:0.1.3'
+    image: "bee.dnp.dappnode.eth:0.1.4"
     build:
       context: ./build
       args:
         UPSTREAM_VERSION: v0.4.0
     ports:
-      - '7070:7070'
+      - "7070:7070"
     volumes:
-      - 'bee:/home/bee/.bee'
+      - "bee:/home/bee/.bee"
     environment:
       - PASSWORD
-      - 'BEE_SWAP_ENDPOINT=https://rpc.slock.it/goerli'
+      - "BEE_SWAP_ENDPOINT=https://rpc.slock.it/goerli"
       - EXTRA_OPTS
     restart: always
 volumes:
