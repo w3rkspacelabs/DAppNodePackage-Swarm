@@ -2,7 +2,7 @@ version: "2"
 fields:
   - title: Swap Endpoint
     id: swap-endpoint
-    description: swap ethereum blockchain endpoint. By default `https://rpc.slock.it/goerli` but you can use your own node if you're currently running
+    description: swap ethereum blockchain endpoint.
     target:
       type: environment
       name: BEE_SWAP_ENDPOINT
@@ -15,3 +15,22 @@ fields:
       name: PASSWORD
     required: true
     secret: true
+  - title: Database Capacity
+    id: db-capacity
+    description: Database capacity in chunks, multiply by 4096 to get approximate capacity in bytes (default 5000000 ~= 20GB )
+    target:
+      type: environment
+      name: BEE_DB_CAPACITY
+    required: true
+  - title: Welcome message
+    id: welcome-message
+    description: send a welcome message string during handshakes
+    target:
+      type: environment
+      name: BEE_WELCOME_MESSAGE
+  - id: swarmDataMountpoint
+    target:
+      type: allNamedVolumesMountpoint
+    title: Storage data mountpoint
+    description: >-
+      Use this option if you want to store the Storage data in a separate drive. Make sure to have sufficient free space
