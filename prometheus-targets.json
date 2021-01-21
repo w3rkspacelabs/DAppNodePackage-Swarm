@@ -3,6 +3,6 @@
       "labels": {
         "job": "bee"
       },
-      "targets": ["bee.dappnode:6060"]
+      "targets": ["bee.dappnode:1635"]
     }
   ]

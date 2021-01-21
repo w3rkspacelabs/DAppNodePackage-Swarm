@@ -1,8 +1,8 @@
 # Bee config template
 # Date of generation: 16 November 2020
 
-# HTTP API listen address (default ":8080")
-api-addr: :8080
+# HTTP API listen address (default ":1633")
+api-addr: :1633
 # initial nodes to connect to (default [/dnsaddr/bootnode.ethswarm.org])
 bootnode: [/dnsaddr/bootnode.ethswarm.org]
 # enable clef signer
@@ -17,8 +17,8 @@ cors-allowed-origins: []
 data-dir: /home/bee/.bee
 # db capacity in chunks, multiply by 4096 to get approximate capacity in bytes
 db-capacity: 5000000
-# debug HTTP API listen address (default ":6060")
-debug-api-addr: :6060
+# debug HTTP API listen address (default ":1635")
+debug-api-addr: :1635
 # enable debug HTTP API
 debug-api-enable: true
 # disable a set of sensitive features in the api
@@ -29,8 +29,8 @@ global-pinning-enable: false
 nat-addr: ""
 # ID of the Swarm network (default 1)
 network-id: 1
-# P2P listen address (default ":7070")
-p2p-addr: :7070
+# P2P listen address (default ":1634")
+p2p-addr: :1634
 # enable P2P QUIC protocol
 p2p-quic-enable: false
 # enable P2P WebSocket transport

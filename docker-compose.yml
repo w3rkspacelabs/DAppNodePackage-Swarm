@@ -7,7 +7,7 @@ services:
       args:
         UPSTREAM_VERSION: v0.4.1
     ports:
-      - "7070:7070"
+      - "1634:1634"
     volumes:
       - "bee:/home/bee/.bee"
     environment:
