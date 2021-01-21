@@ -1,13 +1,13 @@
 version: "3.4"
 services:
   bee.dnp.dappnode.eth:
-    image: "bee.dnp.dappnode.eth:0.1.4"
+    image: "bee.dnp.dappnode.eth:0.1.6"
     build:
       context: ./build
       args:
         UPSTREAM_VERSION: v0.4.2
     ports:
-      - "7070:7070"
+      - "1634:1634"
     volumes:
       - "bee:/home/bee/.bee"
     environment:
