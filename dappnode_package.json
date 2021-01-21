@@ -1,7 +1,5 @@
 {
   "name": "bee.dnp.dappnode.eth",
-  "version": "0.1.6",
-  "upstreamVersion": "v0.4.1",
   "version": "0.1.5",
   "upstreamVersion": "v0.4.2",
   "shortDescription": "Storage and communication infrastructure for a sovereign digital society",
