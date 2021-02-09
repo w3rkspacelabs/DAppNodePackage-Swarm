@@ -5,7 +5,7 @@ services:
     build:
       context: ./build
       args:
-        UPSTREAM_VERSION: v0.4.2
+        UPSTREAM_VERSION: v0.5.0
     ports:
       - "1634:1634"
     volumes:
