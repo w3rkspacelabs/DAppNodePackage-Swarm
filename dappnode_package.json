@@ -10,6 +10,8 @@
   "contributors": [
     "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)"
   ],
+  "upstreamRepo": "ethersphere/bee",
+  "upstreamArg": "UPSTREAM_VERSION",
   "categories": ["Storage", "Communications"],
   "links": {
     "api": "http://bee.dappnode:8080/"

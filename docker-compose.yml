@@ -16,6 +16,6 @@ services:
       - EXTRA_OPTS
       - BEE_DB_CAPACITY=5000000
       - BEE_WELCOME_MESSAGE=Hello from my DAppNode!
-    restart: always
+    restart: unless-stopped
 volumes:
   bee: {}
