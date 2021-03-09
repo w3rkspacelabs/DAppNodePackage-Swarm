@@ -14,7 +14,7 @@
   "upstreamArg": "UPSTREAM_VERSION",
   "categories": ["Storage", "Communications"],
   "links": {
-    "api": "http://bee.dappnode:8080/"
+    "api": "http://bee.dappnode:1365/"
   },
   "requirements": {
     "minimumDappnodeVersion": "0.2.29"
