@@ -1038,8 +1038,8 @@
       "list": []
     },
     "time": {
-      "from": "2020-11-16T21:50:42.255Z",
-      "to": "2020-11-16T22:00:42.261Z"
+      "from": "now-12h",
+      "to": "now"
     },
     "timepicker": {
       "refresh_intervals": [
