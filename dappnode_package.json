@@ -31,6 +31,10 @@
     {
       "name": "keys",
       "path": "/home/bee/.bee/keys"
+    },
+    {
+      "name": "statestore",
+      "path": "/home/bee/.bee/statestore"
     }
   ]
 }
