@@ -4,7 +4,7 @@
 # HTTP API listen address (default ":1633")
 api-addr: :1633
 # initial nodes to connect to (default [/dnsaddr/bootnode.ethswarm.org])
-bootnode: [/dnsaddr/bootnode.ethswarm.org]
+bootnode: [/dnsaddr/testnet.ethswarm.org]
 # cause the node to always accept incoming connections
 bootnode-mode: false
 # enable clef signer
@@ -37,8 +37,8 @@ gateway-mode: false
 global-pinning-enable: false
 # NAT exposed address
 nat-addr: ""
-# ID of the Swarm network (default 5)
-network-id: 5
+# ID of the Swarm network (default 1)
+network-id: 10
 # P2P listen address (default ":1634")
 p2p-addr: :1634
 # enable P2P QUIC protocol
