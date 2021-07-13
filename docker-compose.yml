@@ -20,7 +20,7 @@ services:
   dashboard:
     build:
       context: ./build-ui
-    image: "dashboard.bee.dnp.dappnode.eth:0.1.0"
+    image: "dashboard.bee.dnp.dappnode.eth:0.1.5"
     restart: unless-stopped
 volumes:
   bee: {}

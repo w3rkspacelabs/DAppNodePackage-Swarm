@@ -17,7 +17,8 @@
   "upstreamArg": "UPSTREAM_VERSION",
   "categories": ["Storage", "Communications"],
   "links": {
-    "Bee Dashboard": "http://bee.dappnode:8080/"
+    "Bee Dashboard": "http://dashboard.bee.dappnode:8080/",
+    "DEBUG API": "http://bee.dappnode:1635/peers"
   },
   "requirements": {
     "minimumDappnodeVersion": "0.2.29"
@@ -30,7 +31,7 @@
     "url": "https://github.com/dappnode/DAppNodePackage-bee/issues"
   },
   "license": "GPL-3.0",
-  "mainService": "dashboard",
+  "mainService": "bee.dnp.dappnode.eth",
   "backup": [
     {
       "name": "keys",

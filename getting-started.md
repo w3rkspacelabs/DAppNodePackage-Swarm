@@ -14,9 +14,6 @@ To get more info about swarm go to: [swarm docs](https://docs.ethswarm.org/)
 
 ### Bee Dashboard
 
-It's a UI that let you work with your node on a easy way.
-Below you have an access link, you need to stay connected via VPN. In order to work properly, before you need to copy the container_IP where bee is runnin, you need to know the IP Container associated, go to Network tab, select the service **bee.dnp.dappnode.eth** and copy the Container IP
+It's a UI that let you work with your node on a easy way. You can access by clicking the link below or [here](http://dashboard.bee.dappnode:8080). You should change the endpoint for the url http://bee.dappnode:1635 instead http://localhost:1635
 
-### Debug API
-
-In order to use the Debug API, you need to know the IP Container associated, go to Network tab, select the service **bee.dnp.dappnode.eth** and copy the Container IP. When you are connected via VPN to your DAppNode, go to the next direction http://CONTAINER_IP:1635/peers
+If you have questions about bee in DAppNode i recomend you to ask in the channel #bee of the DAppNode discord. In case the doubst are about bee, we recommend to ask in the bee discord channel.
