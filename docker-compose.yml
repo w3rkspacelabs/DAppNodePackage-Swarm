@@ -17,5 +17,10 @@ services:
       - BEE_DB_CAPACITY=5000000
       - BEE_WELCOME_MESSAGE=Hello from my DAppNode!
     restart: unless-stopped
+  dashboard:
+    build:
+      context: ./build-ui
+    image: "dashboard.bee.dnp.dappnode.eth:0.1.0"
+    restart: unless-stopped
 volumes:
   bee: {}
