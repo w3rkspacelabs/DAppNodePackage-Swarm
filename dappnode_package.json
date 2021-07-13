@@ -1,3 +1,4 @@
+
 {
   "name": "bee.dnp.dappnode.eth",
   "version": "0.1.5",
@@ -27,6 +28,7 @@
     "url": "https://github.com/dappnode/DAppNodePackage-bee/issues"
   },
   "license": "GPL-3.0",
+  "mainService": "dashboard",
   "backup": [
     {
       "name": "keys",
