@@ -9,13 +9,15 @@
   "architectures": ["linux/amd64", "linux/arm64"],
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
   "contributors": [
-    "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)"
+    "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
+    "Tropicar (https://github.com/tropicar)"
   ],
+  
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
   "categories": ["Storage", "Communications"],
   "links": {
-    "api": "http://bee.dappnode:1635/"
+    "Bee Dashboard": "http://bee.dappnode:8080/"
   },
   "requirements": {
     "minimumDappnodeVersion": "0.2.29"
