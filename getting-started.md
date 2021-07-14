@@ -14,6 +14,6 @@ To get more info about swarm go to: [swarm docs](https://docs.ethswarm.org/)
 
 ### Bee Dashboard
 
-It's a UI that let you work with your node on a easy way. You can access by clicking the link below or [here](http://dashboard.bee.dappnode:8080). You should change the endpoint for the url http://bee.dappnode:1635 instead http://localhost:1635
+It's a UI that let you work with your node easily. You can access it by clicking the link below or [here](http://dashboard.bee.dappnode:8080). You should change the endpoint for the URL http://bee.dappnode:1635 instead http://localhost:1635
 
-If you have questions about bee in DAppNode i recomend you to ask in the channel #bee of the DAppNode discord. In case the doubst are about bee, we recommend to ask in the bee discord channel.
+If you have questions about bee in DAppNode I recommend you to ask in the channel #bee of the DAppNode discord. In case the doubts are about bee, we recommend asking in the bee discord channel.
