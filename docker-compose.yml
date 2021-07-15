@@ -1,11 +1,11 @@
 version: "3.4"
 services:
   bee.dnp.dappnode.eth:
-    image: "bee.dnp.dappnode.eth:0.1.6"
+    image: "bee.dnp.dappnode.eth:0.1.5"
     build:
       context: ./build
       args:
-        UPSTREAM_VERSION: v0.6.2
+        UPSTREAM_VERSION: v1.0.0
     ports:
       - "1634:1634"
     volumes:
@@ -16,6 +16,12 @@ services:
       - EXTRA_OPTS
       - BEE_DB_CAPACITY=5000000
       - BEE_WELCOME_MESSAGE=Hello from my DAppNode!
+      - FULL-NODE-MODE=--full-node
+    restart: unless-stopped
+  dashboard:
+    build:
+      context: ./build-ui
+    image: "dashboard.bee.dnp.dappnode.eth:0.1.5"
     restart: unless-stopped
 volumes:
   bee: {}

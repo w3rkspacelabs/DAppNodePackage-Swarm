@@ -34,3 +34,9 @@ fields:
     title: Storage data mountpoint
     description: >-
       Use this option if you want to store the Storage data in a separate drive. Make sure to have sufficient free space
+  - title: Full Node Mode
+    id: full-node
+    description: Enable the full node mode, if you remove this field, you will run the node in light mode, you can obtain more info about it in bee documentation https://docs.ethswarm.org/docs/access-the-swarm/light-nodes
+    target:
+      type: environment
+      name: FULL-NODE-MODE
