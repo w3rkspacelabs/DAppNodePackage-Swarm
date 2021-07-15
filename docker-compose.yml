@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   bee.dnp.dappnode.eth:
-    image: "bee.dnp.dappnode.eth:0.1.6"
+    image: "bee.dnp.dappnode.eth:0.1.5"
     build:
       context: ./build
       args:
@@ -16,6 +16,7 @@ services:
       - EXTRA_OPTS
       - BEE_DB_CAPACITY=5000000
       - BEE_WELCOME_MESSAGE=Hello from my DAppNode!
+      - FULL-NODE-MODE=--full-node
     restart: unless-stopped
   dashboard:
     build:
