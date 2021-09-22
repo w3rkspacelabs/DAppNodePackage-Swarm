@@ -16,7 +16,8 @@
   "categories": ["Storage", "Communications"],
   "links": {
     "Bee Dashboard": "http://dashboard.bee.dappnode:8080/",
-    "DEBUG API": "http://bee.dappnode:1635/peers"
+    "DEBUG API": "http://bee.dappnode:1635/peers",
+    "Swarm Documentation": "https://docs.ethswarm.org/"
   },
   "requirements": {
     "minimumDappnodeVersion": "0.2.29"
