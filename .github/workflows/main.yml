@@ -28,4 +28,4 @@ jobs:
         run: npx @dappnode/dappnodesdk publish patch --dappnode_team_preset
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEVELOPER_ADDRESS: "0xf35960302a07022aba880dffaec2fdd64d5bf1c1"
+          DEVELOPER_ADDRESS: "0xE618050F1adb1F6bb7d03A3484346AC42F3E71EE"
