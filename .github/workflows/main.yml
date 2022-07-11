@@ -25,7 +25,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish
-        run: npx @dappnode/dappnodesdk publish patch
+        run: npx @dappnode/dappnodesdk publish patch --github-release --content_provider=pinata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
+          PINATA_SECRET_API_KEY: ${{ secrets.PINATA_SECRET_API_KEY }}
           DEVELOPER_ADDRESS: "0xE618050F1adb1F6bb7d03A3484346AC42F3E71EE"
