@@ -2,16 +2,14 @@
 
 ### Mainnet
 
-When starting `bee` on the `mainnet` Swarm, you will see messages like this on
-the [logs](http://my.dappnode/#/packages/swarm.public.dappnode.eth/logs):
+When starting `bee` on the `mainnet` Swarm, you will see messages like this on the [logs](http://my.dappnode/#/packages/swarm.public.dappnode.eth/logs):
 
 ```
 time="2022-07-09T10:46:53Z" level=info msg="no chequebook found, deploying new one."
 time="2022-07-09T10:46:54Z" level=warning msg="cannot continue until there is at least 0.000500 xDAI (for Gas) and at least 1 BZZ bridged on the xDAI network available on 1a984bc12fcae55aa02de19e2c43571ff8db0cd8"
 ```
 
-Refer to the Swarm documentation for how to 
-[fund your node](https://docs.ethswarm.org/docs/installation/fund-your-node).
+Refer to the Swarm documentation for how to [fund your node](https://docs.ethswarm.org/docs/installation/fund-your-node).
 
 ### Testnet
 
@@ -23,7 +21,7 @@ To get more info about swarm go to: [swarm docs](https://docs.ethswarm.org/).
 
 ### Bee Dashboard
 
-This dashboard is a UI that allows to you work wth your node easily. Youc an access it by clicking the link below or [here](http://dashboard.swarm.public.dapnode/).
+This dashboard is a UI that allows to you work wth your node easily. You can access it by clicking the link below or [here](http://dashboard.swarm.public.dappnode/).
 
 By default, the node API links are preconfigured. As of the publication of this package however, you must manually specify an RPC endpoint.
 
