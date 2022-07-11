@@ -1,27 +1,28 @@
 version: "3.4"
 services:
-  bee.dnp.dappnode.eth:
-    image: "bee.dnp.dappnode.eth:0.1.5"
+  bee:
+    image: "bee.swarm.public.dappnode.eth:1.0.0"
     build:
-      context: ./src
+      context: bee
       args:
-        UPSTREAM_VERSION: v1.3.0
+        UPSTREAM_VERSION: v1.6.2
     ports:
       - "1634:1634"
     volumes:
-      - "bee:/home/bee/.bee"
+      - "bee-data:/home/bee/.bee"
     environment:
-      - PASSWORD
-      - "BEE_SWAP_ENDPOINT=http://goerli-geth.dappnode:8545"
-      - EXTRA_OPTS
-      - BEE_DB_CAPACITY=5000000
-      - BEE_WELCOME_MESSAGE=Hello from my DAppNode!
-      - FULL-NODE-MODE=--full-node
+      BEE_PASSWORD: ""
+      BEE_SWAP_ENDPOINT: "https://rpc.gnosischain.com"
+      BEE_FULL_NODE: "true"
+      BEE_MAINNET: "true"
+      BEE_DEBUG_API_ENABLE: "true"
+      BEE_CORS_ALLOWED_ORIGINS: "*"
+      EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
+    image: "dashboard.swarm.public.dappnode.eth:1.0.0"
     build:
-      context: ./build-ui
-    image: "dashboard.bee.dnp.dappnode.eth:0.1.5"
+      context: dashboard
     restart: unless-stopped
 volumes:
-  bee: {}
+  bee-data: {}

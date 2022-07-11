@@ -6,28 +6,24 @@ fields:
     target:
       type: environment
       name: BEE_SWAP_ENDPOINT
+      service: bee
     required: true
   - title: Password
     id: password
     description: It is important to choose a strong unique password, as this will protect your valuable private key which is generated during startup
     target:
       type: environment
-      name: PASSWORD
+      name: BEE_PASSWORD
+      service: bee
     required: true
     secret: true
-  - title: Database Capacity
-    id: db-capacity
-    description: Database capacity in chunks, multiply by 4096 to get approximate capacity in bytes (default 5000000 ~= 20GB )
-    target:
-      type: environment
-      name: BEE_DB_CAPACITY
-    required: true
   - title: Welcome message
     id: welcome-message
     description: send a welcome message string during handshakes
     target:
       type: environment
       name: BEE_WELCOME_MESSAGE
+      service: bee
   - id: swarmDataMountpoint
     target:
       type: allNamedVolumesMountpoint
@@ -39,4 +35,12 @@ fields:
     description: Enable the full node mode, if you remove this field, you will run the node in light mode, you can obtain more info about it in bee documentation https://docs.ethswarm.org/docs/access-the-swarm/light-nodes
     target:
       type: environment
-      name: FULL-NODE-MODE
+      name: BEE_FULL_NODE
+      service: bee
+  - title: Mainnet
+    id: mainnet
+    description: Enable if running a bee node on the mainnet Swarm
+    target:
+      type: environment
+      name: BEE_MAINNET
+      service: bee

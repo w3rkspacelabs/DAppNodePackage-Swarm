@@ -1,28 +1,34 @@
 ## How To Start
 
-You'll see a message like this on the [logs](http://my.dappnode/#/packages/bee.dnp.dappnode.eth/logs):
+### Mainnet
+
+When starting `bee` on the `mainnet` Swarm, you will see messages like this on
+the [logs](http://my.dappnode/#/packages/swarm.public.dappnode.eth/logs):
 
 ```
-time="2021-09-28T12:03:02Z" level=info msg="no chequebook found, deploying new one."
-time="2021-09-28T12:03:02Z" level=warning msg="cannot continue until there is sufficient ETH (for Gas) and at least 1 BZZ available on b257291e0f2352asef7774b1b761cd212d0bc220"
-time="2021-09-28T12:03:02Z" level=warning msg="learn how to fund your node by visiting our docs at https://docs.ethswarm.org/docs/installation/fund-your-node"
+time="2022-07-09T10:46:53Z" level=info msg="no chequebook found, deploying new one."
+time="2022-07-09T10:46:54Z" level=warning msg="cannot continue until there is at least 0.000500 xDAI (for Gas) and at least 1 BZZ bridged on the xDAI network available on 1a984bc12fcae55aa02de19e2c43571ff8db0cd8"
 ```
+
+Refer to the Swarm documentation for how to 
+[fund your node](https://docs.ethswarm.org/docs/installation/fund-your-node).
+
+### Testnet
 
 You need to request some bzz and goerli, to do that you should access the Bee discord and request it. Copy the address you saw in your logs, in this case it would be:
-b257291e0f2352asef7774b1b761cd212d0bc220. Go to Bee discord and type:
-`/faucet sprinkle addresses: b257291e0f2352asef7774b1b761cd212d0bc220` but using the address you copied. Once you did that the node will start to work.
+1a984bc12fcae55aa02de19e2c43571ff8db0cd8. Go to Bee discord and type:
+`/faucet sprinkle addresses: 1a984bc12fcae55aa02de19e2c43571ff8db0cd8` but using the address you copied. Once you did that the node will start to work.
 
 To get more info about swarm go to: [swarm docs](https://docs.ethswarm.org/).
 
-You can obtain more infor how to setup a node on our [bee forum guide](https://forum.dappnode.io/t/bee-node-configuration/1016)
-
 ### Bee Dashboard
 
-It's a UI that let you work with your node easily. You can access it by clicking the link below or [here](http://dashboard.bee.dappnode:8080).
+This dashboard is a UI that allows to you work wth your node easily. Youc an access it by clicking the link below or [here](http://dashboard.swarm.public.dapnode/).
 
-In **Status** tab, in the Node Setup:
+By default, the node API links are preconfigured. As of the publication of this package however, you must manually specify an RPC endpoint.
 
-- Connected to Node DebugAPI: you should change the endpoint for the URL http://bee.dappnode:1635 instead http://localhost:1635 .
-- Connected to Node API: you should change the endpoint for the URL http://bee.dappnode:1633 instead http://localhost:1633
+In the [**Account** page](http://dashboard.swarm.public.dappnode/#/account/wallet/top-up):
 
-If you have questions about bee in DAppNode I recommend you to ask in the channel #bee of the DAppNode discord. In case the doubts are about bee, we recommend asking in the bee discord channel.
+- Enter an RPC endpoint as appropriate (e.g https://rpc.gnosischain.com for Gnosis Chain / Swarm mainnet).
+
+If you have questions about Swarm in DAppNode, I am around on both the [Swarm Discord](https://discord.gg/vrhF9hbtUu) and [DAppNode Discord](https://discord.gg/N6q4MVQFGg). If you have any suggestions, bug fixes, PRs etc are welcome on the issue tracker as indicated below.
