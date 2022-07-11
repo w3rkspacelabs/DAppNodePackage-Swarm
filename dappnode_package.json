@@ -1,36 +1,38 @@
 {
-  "name": "bee.dnp.dappnode.eth",
-  "version": "0.1.5",
-  "upstreamVersion": "v1.3.0",
-  "shortDescription": "Storage and communication infrastructure for a sovereign digital society",
+  "name": "swarm.public.dappnode.eth",
+  "version": "1.0.0",
+  "upstreamVersion": "v1.6.2",
+  "upstreamRepo": "ethersphere/bee",
+  "upstreamArg": "UPSTREAM_VERSION",
   "description": "[Swarm](https://swarm.ethereum.org/) is a distributed storage platform and content distribution service, a native base layer service of the ethereum web3 stack. The primary objective of Swarm is to provide a decentralized and redundant store for dapp code and data as well as block chain and state data. Swarm is also set out to provide various base layer services for web3, including node-to-node messaging, media streaming, decentralized database services and scalable state-channel infrastructure for decentralized service economies. \n\n\n Learn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
-  "type": "library",
-  "architectures": ["linux/amd64", "linux/arm64"],
-  "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
+  "shortDescription": "Storage and communication infrastructure for a sovereign digital society",
+  "type": "service",
+  "mainService": "dashboard",
+  "architectures": ["linux/amd64"],
+  "author": "rndlabs <packages@rndlabs.xyz> (https://github.com/rndlabs)",
   "contributors": [
+    "mfw78 <mfw78@rndlabs.xyz> (https://github.com/mfw78)",
+    "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
     "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
     "Tropicar (https://github.com/tropicar)"
   ],
-  "upstreamRepo": "ethersphere/bee",
-  "upstreamArg": "UPSTREAM_VERSION",
   "categories": ["Storage", "Communications"],
-  "links": {
-    "Bee Dashboard": "http://dashboard.bee.dappnode:8080/",
-    "DEBUG API": "http://bee.dappnode:1635/peers",
-    "Swarm Documentation": "https://docs.ethswarm.org/"
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rndlabs/DAppNodePackage-swarm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rndlabs/DAppNodePackage-swarm/issues"
   },
   "requirements": {
     "minimumDappnodeVersion": "0.2.29"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dappnode/DAppNodePackage-bee.git"
+  "links": {
+    "Bee Dashboard": "http://dashboard.swarm.public.dappnode/",
+    "Debug API": "http://bee.swarm.public.dappnode:1635/peers",
+    "Swarm Documentation": "https://docs.ethswarm.org/"
   },
-  "bugs": {
-    "url": "https://github.com/dappnode/DAppNodePackage-bee/issues"
-  },
-  "license": "GPL-3.0",
-  "mainService": "bee.dnp.dappnode.eth",
   "backup": [
     {
       "name": "keys",
@@ -39,6 +41,10 @@
     {
       "name": "statestore",
       "path": "/home/bee/.bee/statestore"
+    },
+    {
+      "name": "localstore",
+      "path": "/home/bee/.bee/localstore"
     }
   ]
 }
