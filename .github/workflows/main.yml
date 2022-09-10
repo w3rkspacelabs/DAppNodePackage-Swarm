@@ -16,7 +16,7 @@ jobs:
     if: github.event_name != 'push'
     steps:
       - uses: actions/checkout@v2
-      - run: npx @dappnode/dappnodesdk build --skip_save
+      - run: npx @dappnode/dappnodesdk build --skip_save --timeout 2h
 
   release:
     name: Release
@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Publish
-        run: npx @dappnode/dappnodesdk publish patch --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
+        run: npx @dappnode/dappnodesdk publish patch --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata --timeout 2h
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
