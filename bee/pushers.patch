@@ -1,0 +1,404 @@
+From a971968991d2bdaaa8c1c4e94de4738abefb97be Mon Sep 17 00:00:00 2001
+From: mfw78 <mfw78@protonmail.com>
+Date: Sat, 20 Aug 2022 10:53:37 +0000
+Subject: [PATCH 1/3] feat: bump to 150 parallel chunks
+
+---
+ pkg/pusher/pusher.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg/pusher/pusher.go b/pkg/pusher/pusher.go
+index 282ae91a..dd05f6c1 100644
+--- a/pkg/pusher/pusher.go
++++ b/pkg/pusher/pusher.go
+@@ -57,7 +57,7 @@ type Service struct {
+ var (
+ 	retryInterval    = 5 * time.Second  // time interval between retries
+ 	traceDuration    = 30 * time.Second // duration for every root tracing span
+-	concurrentPushes = 50               // how many chunks to push simultaneously
++	concurrentPushes = 300              // how many chunks to push simultaneously
+ 	retryCount       = 6
+ )
+ 
+-- 
+2.37.3
+
+
+From 6734cc837856ce482bf8a1ff7a8d676adff91db3 Mon Sep 17 00:00:00 2001
+From: mfw78 <mfw78@protonmail.com>
+Date: Mon, 22 Aug 2022 06:10:15 +0000
+Subject: [PATCH 2/3] feat: more parallel postage signers
+
+---
+ pkg/api/api.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pkg/api/api.go b/pkg/api/api.go
+index d26953f2..9af17ddd 100644
+--- a/pkg/api/api.go
++++ b/pkg/api/api.go
+@@ -84,7 +84,7 @@ const (
+ 
+ 	largeBufferFilesizeThreshold = 10 * 1000000 // ten megs
+ 
+-	uploadSem = 50
++	uploadSem = 300
+ )
+ 
+ const (
+-- 
+2.37.3
+
+
+From 1375919f5a342e8720f71e7a7a503938b43e717f Mon Sep 17 00:00:00 2001
+From: mfw78 <mfw78@protonmail.com>
+Date: Wed, 31 Aug 2022 23:15:00 +0000
+Subject: [PATCH 3/3] feat: selective stewardship
+
+---
+ openapi/Swarm.yaml              |  1 +
+ openapi/SwarmCommon.yaml        | 10 ++++++++++
+ pkg/api/api.go                  |  8 ++++++++
+ pkg/api/bzz.go                  |  2 +-
+ pkg/api/stewardship.go          | 18 +++++++++++++++--
+ pkg/pinning/pinning.go          |  4 ++--
+ pkg/steward/mock/steward.go     |  4 ++--
+ pkg/steward/steward.go          | 12 ++++++------
+ pkg/steward/steward_test.go     |  6 +++---
+ pkg/traversal/traversal.go      | 34 +++++++++++++++++----------------
+ pkg/traversal/traversal_test.go |  8 ++++----
+ 11 files changed, 71 insertions(+), 36 deletions(-)
+
+diff --git a/openapi/Swarm.yaml b/openapi/Swarm.yaml
+index 6daaa356..4de8223a 100644
+--- a/openapi/Swarm.yaml
++++ b/openapi/Swarm.yaml
+@@ -840,6 +840,7 @@ paths:
+             $ref: "SwarmCommon.yaml#/components/schemas/SwarmReference"
+           required: true
+           description: "Root hash of content (can be of any type: collection, file, chunk)"
++        - $ref: "SwarmCommon.yaml#/components/parameters/SwarmStewardWithManifest"
+       responses:
+         "200":
+           description: Ok
+diff --git a/openapi/SwarmCommon.yaml b/openapi/SwarmCommon.yaml
+index a9ad149e..96527980 100644
+--- a/openapi/SwarmCommon.yaml
++++ b/openapi/SwarmCommon.yaml
+@@ -797,6 +797,16 @@ components:
+       required: false
+       description: >
+         Determines if the uploaded data should be sent to the network immediately or in a deferred fashion. By default the upload will be deferred.
++    
++    SwarmStewardWithManifest:
++      in: header
++      name: swarm-steward-with-manifest
++      schema:
++        type: boolean
++        default: "false"
++      required: false
++      description: >
++        Determines if when using stewardship that the whole manifest shuld be stewarded or just the manifest node. By default the manifest node is stewarded.
+ 
+   responses:
+     "204":
+diff --git a/pkg/api/api.go b/pkg/api/api.go
+index 9af17ddd..759341db 100644
+--- a/pkg/api/api.go
++++ b/pkg/api/api.go
+@@ -71,6 +71,7 @@ const (
+ 	SwarmCollectionHeader     = "Swarm-Collection"
+ 	SwarmPostageBatchIdHeader = "Swarm-Postage-Batch-Id"
+ 	SwarmDeferredUploadHeader = "Swarm-Deferred-Upload"
++	SwarmStewardWithManifest  = "Swarm-Steward-With-Manifest"
+ )
+ 
+ // The size of buffer used for prefetching content with Langos.
+@@ -357,6 +358,13 @@ func requestDeferred(r *http.Request) (bool, error) {
+ 	return true, nil
+ }
+ 
++func stewardWithManifest(r *http.Request) (bool, error) {
++	if h := strings.ToLower(r.Header.Get(SwarmStewardWithManifest)); h != "" {
++		return strconv.ParseBool(h)
++	}
++	return true, nil
++}
++
+ func requestPostageBatchId(r *http.Request) ([]byte, error) {
+ 	if h := strings.ToLower(r.Header.Get(SwarmPostageBatchIdHeader)); h != "" {
+ 		if len(h) != 64 {
+diff --git a/pkg/api/bzz.go b/pkg/api/bzz.go
+index e57e722f..cd21a4e3 100644
+--- a/pkg/api/bzz.go
++++ b/pkg/api/bzz.go
+@@ -528,7 +528,7 @@ func (s *Service) bzzPatchHandler(w http.ResponseWriter, r *http.Request) {
+ 		jsonhttp.NotFound(w, nil)
+ 		return
+ 	}
+-	err = s.steward.Reupload(r.Context(), address)
++	err = s.steward.Reupload(r.Context(), address, true)
+ 	if err != nil {
+ 		s.logger.Debugf("bzz patch: reupload %s: %v", address.String(), err)
+ 		s.logger.Error("bzz patch: reupload")
+diff --git a/pkg/api/stewardship.go b/pkg/api/stewardship.go
+index 191cec44..6c7648c0 100644
+--- a/pkg/api/stewardship.go
++++ b/pkg/api/stewardship.go
+@@ -22,7 +22,14 @@ func (s *Service) stewardshipPutHandler(w http.ResponseWriter, r *http.Request)
+ 		jsonhttp.NotFound(w, nil)
+ 		return
+ 	}
+-	err = s.steward.Reupload(r.Context(), address)
++	withManifest, err := stewardWithManifest(r)
++	if err != nil {
++		s.logger.Debugf("stewardship put: parse with manifest %s: %v", nameOrHex, err)
++		s.logger.Error("stewardship put: parse with manifest")
++		jsonhttp.NotFound(w, nil)
++		return
++	}
++	err = s.steward.Reupload(r.Context(), address, withManifest)
+ 	if err != nil {
+ 		s.logger.Debugf("stewardship put: re-upload %s: %v", address, err)
+ 		s.logger.Error("stewardship put: re-upload")
+@@ -46,7 +53,14 @@ func (s *Service) stewardshipGetHandler(w http.ResponseWriter, r *http.Request)
+ 		jsonhttp.NotFound(w, nil)
+ 		return
+ 	}
+-	res, err := s.steward.IsRetrievable(r.Context(), address)
++	withManifest, err := stewardWithManifest(r)
++	if err != nil {
++		s.logger.Debugf("stewardship put: parse with manifest %s: %v", nameOrHex, err)
++		s.logger.Error("stewardship put: parse with manifest")
++		jsonhttp.NotFound(w, nil)
++		return
++	}
++	res, err := s.steward.IsRetrievable(r.Context(), address, withManifest)
+ 	if err != nil {
+ 		s.logger.Debugf("stewardship get: is retrievable %s: %v", address, err)
+ 		s.logger.Error("stewardship get: is retrievable")
+diff --git a/pkg/pinning/pinning.go b/pkg/pinning/pinning.go
+index d0c11fcf..4ec1431b 100644
+--- a/pkg/pinning/pinning.go
++++ b/pkg/pinning/pinning.go
+@@ -84,7 +84,7 @@ func (s *Service) CreatePin(ctx context.Context, ref swarm.Address, traverse boo
+ 	}
+ 
+ 	if traverse {
+-		if err := s.traverser.Traverse(ctx, ref, iterFn); err != nil {
++		if err := s.traverser.Traverse(ctx, ref, false, iterFn); err != nil {
+ 			return fmt.Errorf("traversal of %q failed: %w", ref, err)
+ 		}
+ 	}
+@@ -122,7 +122,7 @@ func (s *Service) DeletePin(ctx context.Context, ref swarm.Address) error {
+ 		return nil
+ 	}
+ 
+-	if err := s.traverser.Traverse(ctx, ref, iterFn); err != nil {
++	if err := s.traverser.Traverse(ctx, ref, false, iterFn); err != nil {
+ 		return fmt.Errorf("traversal of %q failed: %w", ref, multierror.Append(err, iterErr))
+ 	}
+ 	if iterErr != nil {
+diff --git a/pkg/steward/mock/steward.go b/pkg/steward/mock/steward.go
+index 10685ca6..4496794b 100644
+--- a/pkg/steward/mock/steward.go
++++ b/pkg/steward/mock/steward.go
+@@ -17,14 +17,14 @@ type Steward struct {
+ 
+ // Reupload implements steward.Interface Reupload method.
+ // The given address is recorded.
+-func (s *Steward) Reupload(_ context.Context, addr swarm.Address) error {
++func (s *Steward) Reupload(_ context.Context, addr swarm.Address, withManifest bool) error {
+ 	s.addr = addr
+ 	return nil
+ }
+ 
+ // IsRetrievable implements steward.Interface IsRetrievable method.
+ // The method always returns true.
+-func (s *Steward) IsRetrievable(_ context.Context, addr swarm.Address) (bool, error) {
++func (s *Steward) IsRetrievable(_ context.Context, addr swarm.Address, withManifest bool) (bool, error) {
+ 	return addr.Equal(s.addr), nil
+ }
+ 
+diff --git a/pkg/steward/steward.go b/pkg/steward/steward.go
+index 7c34beca..cf92baf6 100644
+--- a/pkg/steward/steward.go
++++ b/pkg/steward/steward.go
+@@ -26,11 +26,11 @@ const parallelPush = 5
+ type Interface interface {
+ 	// Reupload root hash and all of its underlying
+ 	// associated chunks to the network.
+-	Reupload(context.Context, swarm.Address) error
++	Reupload(context.Context, swarm.Address, bool) error
+ 
+ 	// IsRetrievable checks whether the content
+ 	// on the given address is retrievable.
+-	IsRetrievable(context.Context, swarm.Address) (bool, error)
++	IsRetrievable(context.Context, swarm.Address, bool) (bool, error)
+ }
+ 
+ type steward struct {
+@@ -54,7 +54,7 @@ func New(getter storage.Getter, t traversal.Traverser, r retrieval.Interface, p
+ // addresses and push every chunk individually to the network.
+ // It assumes all chunks are available locally. It is therefore
+ // advisable to pin the content locally before trying to reupload it.
+-func (s *steward) Reupload(ctx context.Context, root swarm.Address) error {
++func (s *steward) Reupload(ctx context.Context, root swarm.Address, withManifest bool) error {
+ 	sem := make(chan struct{}, parallelPush)
+ 	eg, _ := errgroup.WithContext(ctx)
+ 	fn := func(addr swarm.Address) error {
+@@ -78,7 +78,7 @@ func (s *steward) Reupload(ctx context.Context, root swarm.Address) error {
+ 		return nil
+ 	}
+ 
+-	if err := s.traverser.Traverse(ctx, root, fn); err != nil {
++	if err := s.traverser.Traverse(ctx, root, withManifest, fn); err != nil {
+ 		return fmt.Errorf("traversal of %s failed: %w", root.String(), err)
+ 	}
+ 
+@@ -89,9 +89,9 @@ func (s *steward) Reupload(ctx context.Context, root swarm.Address) error {
+ }
+ 
+ // IsRetrievable implements Interface.IsRetrievable method.
+-func (s *steward) IsRetrievable(ctx context.Context, root swarm.Address) (bool, error) {
++func (s *steward) IsRetrievable(ctx context.Context, root swarm.Address, withManifest bool) (bool, error) {
+ 	noop := func(leaf swarm.Address) error { return nil }
+-	switch err := s.netTraverser.Traverse(ctx, root, noop); {
++	switch err := s.netTraverser.Traverse(ctx, root, withManifest, noop); {
+ 	case errors.Is(err, storage.ErrNotFound):
+ 		return false, nil
+ 	case err != nil:
+diff --git a/pkg/steward/steward_test.go b/pkg/steward/steward_test.go
+index 05a9f39b..881ec838 100644
+--- a/pkg/steward/steward_test.go
++++ b/pkg/steward/steward_test.go
+@@ -55,14 +55,14 @@ func TestSteward(t *testing.T) {
+ 		t.Fatal(err)
+ 	}
+ 
+-	err = s.Reupload(ctx, addr)
++	err = s.Reupload(ctx, addr, true)
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+ 	mu.Lock()
+ 	defer mu.Unlock()
+ 
+-	isRetrievable, err := s.IsRetrievable(ctx, addr)
++	isRetrievable, err := s.IsRetrievable(ctx, addr, true)
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+@@ -106,7 +106,7 @@ func TestSteward_ErrWantSelf(t *testing.T) {
+ 		t.Fatal(err)
+ 	}
+ 
+-	err = s.Reupload(ctx, addr)
++	err = s.Reupload(ctx, addr, true)
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+diff --git a/pkg/traversal/traversal.go b/pkg/traversal/traversal.go
+index 5eaa586b..8d3d9c2e 100644
+--- a/pkg/traversal/traversal.go
++++ b/pkg/traversal/traversal.go
+@@ -25,7 +25,7 @@ import (
+ // Traverser represents service which traverse through address dependent chunks.
+ type Traverser interface {
+ 	// Traverse iterates through each address related to the supplied one, if possible.
+-	Traverse(context.Context, swarm.Address, swarm.AddressIterFunc) error
++	Traverse(context.Context, swarm.Address, bool, swarm.AddressIterFunc) error
+ }
+ 
+ type PutGetter interface {
+@@ -44,7 +44,7 @@ type service struct {
+ }
+ 
+ // Traverse implements Traverser.Traverse method.
+-func (s *service) Traverse(ctx context.Context, addr swarm.Address, iterFn swarm.AddressIterFunc) error {
++func (s *service) Traverse(ctx context.Context, addr swarm.Address, withManifest bool, iterFn swarm.AddressIterFunc) error {
+ 	processBytes := func(ref swarm.Address) error {
+ 		j, _, err := joiner.New(ctx, s.store, ref)
+ 		if err != nil {
+@@ -67,22 +67,24 @@ func (s *service) Traverse(ctx context.Context, addr swarm.Address, iterFn swarm
+ 	}
+ 
+ 	ls := loadsave.NewReadonly(s.store)
+-	switch mf, err := manifest.NewDefaultManifestReference(addr, ls); {
+-	case errors.Is(err, manifest.ErrInvalidManifestType):
+-		break
+-	case err != nil:
+-		return fmt.Errorf("traversal: unable to create manifest reference for %q: %w", addr, err)
+-	default:
+-		err := mf.IterateAddresses(ctx, processBytes)
+-		if errors.Is(err, mantaray.ErrTooShort) || errors.Is(err, mantaray.ErrInvalidVersionHash) {
+-			// Based on the returned errors we conclude that it might
+-			// not be a manifest, so we try non-manifest processing.
++	if withManifest {
++		switch mf, err := manifest.NewDefaultManifestReference(addr, ls); {
++		case errors.Is(err, manifest.ErrInvalidManifestType):
+ 			break
++		case err != nil:
++			return fmt.Errorf("traversal: unable to create manifest reference for %q: %w", addr, err)
++		default:
++			err := mf.IterateAddresses(ctx, processBytes)
++			if errors.Is(err, mantaray.ErrTooShort) || errors.Is(err, mantaray.ErrInvalidVersionHash) {
++				// Based on the returned errors we conclude that it might
++				// not be a manifest, so we try non-manifest processing.
++				break
++			}
++			if err != nil {
++				return fmt.Errorf("traversal: unable to process bytes for %q: %w", addr, err)
++			}
++			return nil
+ 		}
+-		if err != nil {
+-			return fmt.Errorf("traversal: unable to process bytes for %q: %w", addr, err)
+-		}
+-		return nil
+ 	}
+ 
+ 	// Non-manifest processing.
+diff --git a/pkg/traversal/traversal_test.go b/pkg/traversal/traversal_test.go
+index 0cde321b..1b181978 100644
+--- a/pkg/traversal/traversal_test.go
++++ b/pkg/traversal/traversal_test.go
+@@ -162,7 +162,7 @@ func TestTraversalBytes(t *testing.T) {
+ 				t.Fatal(err)
+ 			}
+ 
+-			err = traversal.New(storerMock).Traverse(ctx, address, iter.Next)
++			err = traversal.New(storerMock).Traverse(ctx, address, true, iter.Next)
+ 			if err != nil {
+ 				t.Fatal(err)
+ 			}
+@@ -284,7 +284,7 @@ func TestTraversalFiles(t *testing.T) {
+ 				t.Fatal(err)
+ 			}
+ 
+-			err = traversal.New(storerMock).Traverse(ctx, address, iter.Next)
++			err = traversal.New(storerMock).Traverse(ctx, address, true, iter.Next)
+ 			if err != nil {
+ 				t.Fatal(err)
+ 			}
+@@ -437,7 +437,7 @@ func TestTraversalManifest(t *testing.T) {
+ 				t.Fatal(err)
+ 			}
+ 
+-			err = traversal.New(storerMock).Traverse(ctx, address, iter.Next)
++			err = traversal.New(storerMock).Traverse(ctx, address, true, iter.Next)
+ 			if err != nil {
+ 				t.Fatal(err)
+ 			}
+@@ -474,7 +474,7 @@ func TestTraversalSOC(t *testing.T) {
+ 		t.Fatal(err)
+ 	}
+ 
+-	err = traversal.New(store).Traverse(ctx, sch.Address(), iter.Next)
++	err = traversal.New(store).Traverse(ctx, sch.Address(), true, iter.Next)
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+-- 
+2.37.3
+

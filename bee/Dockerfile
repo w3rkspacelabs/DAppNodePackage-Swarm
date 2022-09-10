@@ -1,17 +1,30 @@
-##############
-# Base image #
-##############
+###############
+# Build image #
+###############
 
-FROM debian:11-slim as base
+FROM golang:1.17 AS build
 
 ARG TARGETARCH
 ARG UPSTREAM_VERSION
 
-ENV DOWNLOAD_URL https://github.com/ethersphere/bee/releases/download
+WORKDIR /src
+RUN git clone https://github.com/rndlabs/bee . && \
+    git checkout bbf130119575bed15782d6e5d179d94cc21dcdab && \
+    git switch -c feat/dirty
 
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget; \
-  wget $DOWNLOAD_URL/$UPSTREAM_VERSION/bee-linux-${TARGETARCH:-amd64} -O /usr/local/bin/bee && \
-  chmod +x /usr/local/bin/bee 
+# RUN ls -alh
+# RUN pwd
+# # enable modules caching in separate layer
+# COPY go.mod go.sum ./
+RUN go mod download
+COPY . ./
+
+RUN git apply pushers.patch
+RUN make binary
+
+##############
+# Base image #
+##############
 
 FROM debian:11-slim
 ENV DEBIAN_FRONTEND noninteractive
@@ -26,7 +39,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 RUN mkdir -p /home/bee/.bee && chown 999:999 /home/bee/.bee
 
 # Get the binary from the base 
-COPY --from=base /usr/local/bin/bee /usr/local/bin/bee
+COPY --from=build /src/dist/bee /usr/local/bin/bee
 
 COPY entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/bee && \
