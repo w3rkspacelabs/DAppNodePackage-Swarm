@@ -1,7 +1,7 @@
 {
   "name": "swarm.public.dappnode.eth",
   "version": "1.0.1",
-  "upstreamVersion": "v1.7.0",
+  "upstreamVersion": "v1.8.0",
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
   "description": "[Swarm](https://swarm.ethereum.org/) is a distributed storage platform and content distribution service, a native base layer service of the ethereum web3 stack. The primary objective of Swarm is to provide a decentralized and redundant store for dapp code and data as well as block chain and state data. Swarm is also set out to provide various base layer services for web3, including node-to-node messaging, media streaming, decentralized database services and scalable state-channel infrastructure for decentralized service economies. \n\n\n Learn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
