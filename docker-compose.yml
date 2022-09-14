@@ -5,7 +5,7 @@ services:
     build:
       context: bee
       args:
-        UPSTREAM_VERSION: v1.8.0-rc3
+        UPSTREAM_VERSION: v1.8.0
     ports:
       - "1634:1634"
     volumes:
@@ -16,7 +16,7 @@ services:
       BEE_MAINNET: "true"
       BEE_DEBUG_API_ENABLE: "true"
       BEE_CORS_ALLOWED_ORIGINS: "*"
-      BEE_WELCOME_MESSAGE: "Swarming on DAppNode 🐝"
+      BEE_WELCOME_MESSAGE: "Swarming on DAppNode \U0001F41D"
       BEE_PASSWORD_FILE: /home/bee/.bee/password
       EXTRA_OPTS: ""
     restart: unless-stopped

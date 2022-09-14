@@ -14,5 +14,5 @@ The system is economically self-sustaining due to a built-in incentive system en
 
 Bee is a Swarm client implemented in Go. It’s the basic building block for the Swarm network.
 
-You can get more information about the project on his official site https://swarm.ethereum.org/
+You can get more information about the project on his official site https://www.ethswarm.org/
 
