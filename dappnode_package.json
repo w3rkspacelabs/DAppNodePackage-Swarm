@@ -48,6 +48,10 @@
       "name": "localstore",
       "path": "/home/bee/.bee/localstore"
     },
+    {
+      "name": "password",
+      "path": "/home/bee/.bee/password"
+    }
   ],
   "exposable": [
     {
