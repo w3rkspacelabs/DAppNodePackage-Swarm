@@ -1,13 +1,13 @@
 {
   "name": "swarm.public.dappnode.eth",
   "version": "1.0.1",
-  "upstreamVersion": "v1.8.0-rc3",
+  "upstreamVersion": "v1.8.0",
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
-  "description": "[Swarm](https://swarm.ethereum.org/) is a distributed storage platform and content distribution service, a native base layer service of the ethereum web3 stack. The primary objective of Swarm is to provide a decentralized and redundant store for dapp code and data as well as block chain and state data. Swarm is also set out to provide various base layer services for web3, including node-to-node messaging, media streaming, decentralized database services and scalable state-channel infrastructure for decentralized service economies. \n\n\n Learn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
+  "description": "[Swarm](https://www.ethswarm.org/) Swarm is a decentralised data storage and distribution technology. Ready to power the next generation of censorship-resistant, unstoppable, serverless dapps.\n\n\nLearn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
   "shortDescription": "Storage and communication infrastructure for a sovereign digital society",
   "type": "service",
-  "mainService": "dashboard",
+  "mainService": "bee",
   "architectures": ["linux/amd64", "linux/arm64"],
   "author": "rndlabs <packages@rndlabs.xyz> (https://github.com/rndlabs)",
   "contributors": [
@@ -29,7 +29,9 @@
     "minimumDappnodeVersion": "0.2.29"
   },
   "links": {
-    "Bee Dashboard": "http://dashboard.swarm.public.dappnode/",
+    "homepage": "https://www.ethswarm.org/",
+    "ui": "http://dashboard.swarm.public.dappnode/",
+    "api": "http://bee.swarm.public.dappnode:1633/",
     "Debug API": "http://bee.swarm.public.dappnode:1635/peers",
     "Swarm Documentation": "https://docs.ethswarm.org/"
   },
@@ -45,6 +47,14 @@
     {
       "name": "localstore",
       "path": "/home/bee/.bee/localstore"
+    },
+  ],
+  "exposable": [
+    {
+      "name": "Bee P2P Port",
+      "description": "P2P port for swarming with other bees",
+      "serviceName": "bee",
+      "port": 1634
     }
   ]
 }

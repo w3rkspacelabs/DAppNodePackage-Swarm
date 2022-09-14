@@ -11,12 +11,13 @@ services:
     volumes:
       - "bee-data:/home/bee/.bee"
     environment:
-      BEE_PASSWORD: ""
-      BEE_SWAP_ENDPOINT: "https://rpc.gnosischain.com"
+      BEE_SWAP_ENDPOINT: "http://nethermind-xdai.dappnode:8545"
       BEE_FULL_NODE: "true"
       BEE_MAINNET: "true"
       BEE_DEBUG_API_ENABLE: "true"
       BEE_CORS_ALLOWED_ORIGINS: "*"
+      BEE_WELCOME_MESSAGE: "Swarming on DAppNode 🐝"
+      BEE_PASSWORD_FILE: "/home/bee/.bee/password"
       EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
