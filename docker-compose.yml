@@ -17,7 +17,7 @@ services:
       BEE_DEBUG_API_ENABLE: "true"
       BEE_CORS_ALLOWED_ORIGINS: "*"
       BEE_WELCOME_MESSAGE: "Swarming on DAppNode 🐝"
-      BEE_PASSWORD_FILE: "/home/bee/.bee/password"
+      BEE_PASSWORD_FILE: /home/bee/.bee/password
       EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
