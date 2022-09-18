@@ -1,16 +1,18 @@
-FROM node:15.14-alpine AS build
+FROM node:alpine AS build
 
 WORKDIR /usr/src/app
 
 ENV REACT_APP_BEE_HOST=http://bee.swarm.public.dappnode:1633
 ENV REACT_APP_BEE_DEBUG_HOST=http://bee.swarm.public.dappnode:1635
+ENV REACT_APP_DEFAULT_RPC_URL=http://nethermind-xdai.dappnode:8545
 
-RUN apk add git && \
-    git clone https://github.com/ethersphere/bee-dashboard.git . && \
+RUN apk add git build-base python3 && \
+    git clone --depth 1 --branch v0.20.2 https://github.com/ethersphere/bee-dashboard.git . && \
+    npm uninstall puppeteer && \
     npm ci && \
     npm run build
 
-FROM node:15.14-alpine AS final
+FROM node:alpine AS final
 
 RUN npm i -g serve
 

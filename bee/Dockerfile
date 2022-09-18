@@ -8,9 +8,9 @@ ARG TARGETARCH
 ARG UPSTREAM_VERSION
 
 WORKDIR /src
-RUN git clone https://github.com/rndlabs/bee . && \
-    git checkout bbf130119575bed15782d6e5d179d94cc21dcdab && \
-    git switch -c feat/dirty
+RUN git clone https://github.com/ethersphere/bee . && \
+    git checkout 577e2ec5a11e0a8bc5e86c36328c73c070d971d6 && \
+    git switch -c dirty
 
 # RUN ls -alh
 # RUN pwd

@@ -1,22 +1,23 @@
 version: "3.4"
 services:
   bee:
-    image: "bee.swarm.public.dappnode.eth:1.0.2"
+    image: "bee.swarm.public.dappnode.eth:1.0.1"
     build:
       context: bee
       args:
-        UPSTREAM_VERSION: v1.7.0-dirty
+        UPSTREAM_VERSION: v1.8.1
     ports:
       - "1634:1634"
     volumes:
       - "bee-data:/home/bee/.bee"
     environment:
-      BEE_PASSWORD: ""
-      BEE_SWAP_ENDPOINT: "https://rpc.gnosischain.com"
+      BEE_SWAP_ENDPOINT: "http://nethermind-xdai.dappnode:8545"
       BEE_FULL_NODE: "true"
       BEE_MAINNET: "true"
       BEE_DEBUG_API_ENABLE: "true"
       BEE_CORS_ALLOWED_ORIGINS: "*"
+      BEE_WELCOME_MESSAGE: "Swarming on DAppNode \U0001F41D"
+      BEE_PASSWORD_FILE: /home/bee/.bee/password
       EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
