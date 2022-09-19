@@ -8,9 +8,8 @@ ARG TARGETARCH
 ARG UPSTREAM_VERSION
 
 WORKDIR /src
-RUN git clone https://github.com/ethersphere/bee . && \
-    git checkout 577e2ec5a11e0a8bc5e86c36328c73c070d971d6 && \
-    git switch -c dirty
+RUN git clone https://github.com/rndlabs/bee . && \
+    git checkout 16ff1388e0b42a9443b44aa9fe442f11b9dbe681
 
 # RUN ls -alh
 # RUN pwd
@@ -19,7 +18,7 @@ RUN git clone https://github.com/ethersphere/bee . && \
 RUN go mod download
 COPY . ./
 
-RUN git apply pushers.patch
+# RUN git apply pushers.patch
 RUN make binary
 
 ##############
