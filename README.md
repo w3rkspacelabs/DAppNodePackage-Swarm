@@ -1,4 +1,4 @@
-# DAppNodePackage-bee
+# DAppNodePackage-swarm-testnet
 
 ## **Ethereum Swarm Bee**
 ![avatar](swarm-avatar-min.png)
