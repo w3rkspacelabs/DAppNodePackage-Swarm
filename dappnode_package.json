@@ -1,5 +1,5 @@
 {
-  "name": "swarm.public.dappnode.eth",
+  "name": "swarm-testnet.public.dappnode.eth",
   "version": "1.0.4",
   "upstreamVersion": "v1.8.1",
   "upstreamRepo": "ethersphere/bee",
@@ -30,9 +30,9 @@
   },
   "links": {
     "homepage": "https://www.ethswarm.org/",
-    "ui": "http://dashboard.swarm.public.dappnode/",
-    "api": "http://bee.swarm.public.dappnode:1633/",
-    "Debug API": "http://bee.swarm.public.dappnode:1635/peers",
+    "ui": "http://dashboard.swarm-testnet.public.dappnode/",
+    "api": "http://bee.swarm-testnet.public.dappnode:1633/",
+    "Debug API": "http://bee.swarm-testnet.public.dappnode:1635/peers",
     "Swarm Documentation": "https://docs.ethswarm.org/"
   },
   "backup": [
@@ -58,7 +58,7 @@
       "name": "Bee P2P Port",
       "description": "P2P port for swarming with other bees",
       "serviceName": "bee",
-      "port": 1634
+      "port": 1734
     }
   ]
 }

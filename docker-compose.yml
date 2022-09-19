@@ -1,13 +1,13 @@
 version: "3.4"
 services:
   bee:
-    image: "bee.swarm.public.dappnode.eth:1.0.1"
+    image: "bee.swarm-testnet.public.dappnode.eth:1.0.0"
     build:
       context: bee
       args:
         UPSTREAM_VERSION: v1.8.1
     ports:
-      - "1634:1634"
+      - "1734:1734"
     volumes:
       - "bee-data:/home/bee/.bee"
     environment:
@@ -16,12 +16,15 @@ services:
       BEE_MAINNET: "true"
       BEE_DEBUG_API_ENABLE: "true"
       BEE_CORS_ALLOWED_ORIGINS: "*"
+      BEE_API_ADDR: ":1733"
+      BEE_P2P_ADDR: ":1734"
+      BEE_DEBUG_API_ADDR: ":1735"
       BEE_WELCOME_MESSAGE: "Swarming on DAppNode \U0001F41D"
       BEE_PASSWORD_FILE: /home/bee/.bee/password
       EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
-    image: "dashboard.swarm.public.dappnode.eth:1.0.1"
+    image: "dashboard.swarm-testnet.public.dappnode.eth:1.0.0"
     build:
       context: dashboard
     restart: unless-stopped

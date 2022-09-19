@@ -32,7 +32,7 @@ COPY entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/bee && \
     chmod +x /usr/local/bin/entrypoint.sh
 
-EXPOSE 1633 1634 1635
+EXPOSE 1733 1734 1735
 USER bee
 WORKDIR /home/bee
 VOLUME /home/bee/.bee

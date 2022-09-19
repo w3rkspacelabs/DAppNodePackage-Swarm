@@ -2,8 +2,8 @@ FROM node:alpine AS build
 
 WORKDIR /usr/src/app
 
-ENV REACT_APP_BEE_HOST=http://bee.swarm.public.dappnode:1633
-ENV REACT_APP_BEE_DEBUG_HOST=http://bee.swarm.public.dappnode:1635
+ENV REACT_APP_BEE_HOST=http://bee.swarm-testnet.public.dappnode:1733
+ENV REACT_APP_BEE_DEBUG_HOST=http://bee.swarm-testnet.public.dappnode:1735
 ENV REACT_APP_DEFAULT_RPC_URL=http://nethermind-xdai.dappnode:8545
 
 RUN apk add git build-base python3 && \
