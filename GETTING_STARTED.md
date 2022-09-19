@@ -1,5 +1,3 @@
-## Swarm Testnet
-
 ### Requirements
 
 The Swarm *testnet* uses the Görli (Goerli) Testnet for on-chain activities - therefore you **MUST** configure a Goerli RPC endpoint. This package **ASSUMES** that you have successfully configured and [installed the Goerli Geth package](http://my.dappnode/#/installer/goerli-geth.dnp.dappnode.eth), but provides you an option to customize this (see below).
@@ -12,6 +10,16 @@ If you wish to use a different RPC endpoint instead of [installing Goerli Geth](
 * Set the Bee Dashboard [Blockchain RPC URL](http://dashboard.swarm-testnet.public.dappnode/#/settings) to your desired Goerli RPC endpoint.
 
 **NOTE: For the benefit of decentralization and blockchain health, it is recommended to run your own node.**
+
+#### Network Ports (**testnet only**)
+
+This package (`swarm-testnet.public.dappnode.eth`) utilizes different ports than those referenced in the [bee documentation](https://docs.ethswarm.org/docs/). The ports for use are mapped such that:
+
+* Bee API port: 1733
+* Bee P2P port: 1734
+* Bee Debug API port: 1735
+
+If you are running your DAppNode within a network that has a UPnP compatible router, the P2P port (1734) will automatically be forwarded by the router to the appropriate port on the DAppNode. Otherwise, to ensure optimal performance of your node, you should configure port forwarding of TCP port 1734 to the DAppNode's internal IP address.
 
 ### Funding your node
 

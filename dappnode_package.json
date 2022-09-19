@@ -31,8 +31,8 @@
   "links": {
     "homepage": "https://www.ethswarm.org/",
     "ui": "http://dashboard.swarm-testnet.public.dappnode/",
-    "api": "http://bee.swarm-testnet.public.dappnode:1633/",
-    "Debug API": "http://bee.swarm-testnet.public.dappnode:1635/peers",
+    "api": "http://bee.swarm-testnet.public.dappnode:1733/",
+    "Debug API": "http://bee.swarm-testnet.public.dappnode:1735/peers",
     "Swarm Documentation": "https://docs.ethswarm.org/"
   },
   "backup": [
