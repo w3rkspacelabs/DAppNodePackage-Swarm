@@ -6,8 +6,8 @@ The Swarm mainnet uses Gnosis Chain (formerly xDai) for on-chain activities - th
 
 If you wish to use a different RPC endpoint instead of [installing Nethermind xDai](http://my.dappnode/#/installer/nethermind-xdai.dnp.dappnode.eth), you must change the following options:
 
-* Set bee's `BEE_SWAP_ENDPOINT` in the [config](http://my.dappnode/#/packages/swarm.public.dappnode.eth/config) to your desired Goerli RPC endpoint.
-* Set the Bee Dashboard [Blockchain RPC URL](http://dashboard.swarm.public.dappnode/#/settings) to your desired Goerli RPC endpoint.
+* Set bee's `BEE_SWAP_ENDPOINT` in the [config](http://my.dappnode/#/packages/swarm.public.dappnode.eth/config) to your desired Gnosis Chain RPC endpoint.
+* Set the Bee Dashboard [Blockchain RPC URL](http://dashboard.swarm.public.dappnode/#/settings) to your desired Gnosis Chain RPC endpoint.
 
 **NOTE: For the benefit of decentralization and blockchain health, it is recommended to run your own node.**
 
