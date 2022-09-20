@@ -2,15 +2,47 @@ version: "2"
 fields:
   - title: Swap Endpoint
     id: swap-endpoint
-    description: swap ethereum blockchain endpoint.
+    description: >-
+      Ethereum blockchain endpoint used for on-chain activities. Specify a custom RPC endpoint, or install one of the following packages:
+
+      - Nethermind xDai [Install link](http://my.dappnode/#/installer/nethermind-xdai.dnp.dappnode.eth)
     target:
       type: environment
       name: BEE_SWAP_ENDPOINT
       service: bee
     required: true
+  - title: ENS resolver RPC (Ethereum mainnet)
+    id: resolver-options
+    description: >-
+      Ethereum blockchain endpoint used for resolving ENS names. Specify a custom RPC endpoint, or install one of the following packages:
+
+      - Geth [Install link](http://my.dappnode/#/installer/geth.dnp.dappnode.eth)
+
+      - Nethermind [Install link](http://my.dappnode/#/installer/nethermind.public.dappnode.eth)
+
+      - Erigon [Install link](http://my.dappnode/#/installer/erigon.dnp.dappnode.eth)
+    target:
+      type: environment
+      name: BEE_RESOLVER_OPTIONS
+      service: bee
+    required: false
+  - title: Initial chequebook deposit (xBZZ)
+    id: chequebook-deposit
+    description: >-
+      Initial amount of xBZZ to deposit to the chequebook. This amount will be deposited into the
+      chequebook and used to pay for swapping bandwidth on Swarm. The default is 10000000000000000
+      xBZZ though this  may be set to 0. NOTE: This value is in wei, and xBZZ has 16 decimals, 
+      therefore 1e16 = 1xBZZ.
+    target:
+      type: environment
+      name: BEE_SWAP_INITIAL_DEPOSIT
+      service: bee
+    required: false
+    pattern: "^[0-9]*$"
+    patternErrorMessage: "Must be a number"
   - title: Welcome message
     id: welcome-message
-    description: send a welcome message string during handshakes
+    description: A welcome message string sent during handshakes
     target:
       type: environment
       name: BEE_WELCOME_MESSAGE
@@ -22,6 +54,10 @@ fields:
       type: environment
       name: BEE_FULL_NODE
       service: bee
+    enum:
+      - "true"
+      - "false"
+    required: true
   - id: swarmDataMountpoint
     target:
       type: allNamedVolumesMountpoint
