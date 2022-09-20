@@ -12,6 +12,7 @@ services:
       - "bee-data:/home/bee/.bee"
     environment:
       BEE_SWAP_ENDPOINT: "http://goerli-geth.dappnode:8545"
+      BEE_RESOLVER_OPTIONS: "http://goerli-geth.dappnode:8545"
       BEE_FULL_NODE: "true"
       BEE_DEBUG_API_ENABLE: "true"
       BEE_CORS_ALLOWED_ORIGINS: "*"
