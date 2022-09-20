@@ -1,6 +1,6 @@
 version: "2"
 fields:
-  - title: Swap Endpoint
+  - title: Swap RPC Endpoint (Gnosis Chain)
     id: swap-endpoint
     description: >-
       Ethereum blockchain endpoint used for on-chain activities. Specify a custom RPC endpoint, or install one of the following packages:
