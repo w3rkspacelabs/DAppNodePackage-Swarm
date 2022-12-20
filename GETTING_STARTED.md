@@ -17,36 +17,16 @@ If you are running your DAppNode within a network that has a UPnP compatible rou
 
 ### Funding your node
 
-When starting `bee` on the `mainnet` Swarm, you will see messages like this on the [logs](http://my.dappnode/#/packages/swarm.public.dappnode.eth/logs):
+Since `bee` version `1.10.0`, the default funding requirements for `bee` are now set to `0`, meaning that you can run a full-node immediately with no initial downpayment, allowing you to provide storage, and access the swarm.
 
-```
-"time"="2022-09-19 12:23:37.139144" "level"="warning" "logger"="node" "msg"="clef is not enabled; portability and security of your keys is sub optimal"
-"time"="2022-09-19 12:23:37.808446" "level"="info" "logger"="node" "msg"="swarm public key" "public_key"="039da8cf70a603006bb7d316ec715999f19c55584e61bb2924c9bf701a5cc1d955"
-"time"="2022-09-19 12:23:38.789794" "level"="info" "logger"="node" "msg"="pss public key" "public_key"="02d791c1e9b1363a3f7255aa2738518fbf976432339343c5bf2bcdb08200057118"
-"time"="2022-09-19 12:23:38.789900" "level"="info" "logger"="node" "msg"="using ethereum address" "address"="0b7350e69ec1b52ac9eb101ab97a1c37a2161e0f"
-"time"="2022-09-19 12:23:38.789946" "level"="info" "logger"="node" "msg"="bee version" "version"="1.8.1-577e2ec5"
-"time"="2022-09-19 12:23:38.803714" "level"="info" "logger"="node" "msg"="starting with an enabled chain backend"
-"time"="2022-09-19 12:23:38.806466" "level"="info" "logger"="node" "msg"="connected to ethereum backend" "version"="Geth/v1.10.21-stable-67109427/linux-amd64/go1.18.4"
-"time"="2022-09-19 12:23:38.809090" "level"="info" "logger"="node" "msg"="starting debug server" "address"="[::]:1735"
-"time"="2022-09-19 12:23:38.811030" "level"="info" "logger"="node" "msg"="using default factory address" "chain_id"=5 "factory_address"="73c412512e1ca0be3b89b77ab3466da6a1b9d273"
-"time"="2022-09-19 12:23:38.821749" "level"="info" "logger"="node/chequebook" "msg"="no chequebook found, deploying new one."
-"time"="2022-09-19 12:23:38.843481" "level"="warning" "logger"="node/chequebook" "msg"="cannot continue until there is at least min xDAI (for Gas) and at least min BZZ bridged on the xDAI network available on address" "min_xdai_amount"="4.865e-10" "min_bzz_amount"="1" "address"="0b7350e69ec1b52ac9eb101ab97a1c37a2161e0f"
-"time"="2022-09-19 12:23:38.843540" "level"="warning" "logger"="node/chequebook" "msg"="learn how to fund your node by visiting our docs at https://docs.ethswarm.org/docs/installation/fund-your-node"
-```
+If you wish to receive rewards for providing storage, you can *stake* `xBZZ` to receive storage incentives. To do this, you will require xDai and `xBZZ`:
 
-Of very import note in the above log files, you will see your node's ethereum address. This is the **address on Gnosis Chain** to which to send xDAI (for Gas) and xBZZ (BZZ tokens bridged from Ethereum mainnet to Gnosis Chain). Follow the log file's hint and head on over to the [fund your node](https://docs.ethswarm.org/docs/installation/fund-your-node) documentation for details on how to fund your node so it may become part of the swarm mainnet!
-
-Once you have sent the xDai and xBZZ to the node's address it will take a few moments for the node to detect these transactions. Once the transactions are  automatically detected the node will commence initialization.
-
-For more information on configuring the `bee` node, please refer to the [documentation](https://docs.ethswarm.org/docs/).
-
-#### Starting with no xBZZ
-
-If your desire is to run a node as storage only for the benefit of the Swarm, first, thank you ❤️🐝. This doesn't limit your ability to earn rewards (currently limited to bandwidth exchange). Therefore, it is possible to *only* fund the node's address with xDAI for the initial chequebook deployment, but this does *not* require any chequebook deposit - therefore in the [config](http://my.dappnode/#/packages/swarm.public.dappnode.eth/config) you can set the 'Initial chequebook deposit (xBZZ)' to 0. The node will still be able to participate in the Swarm, though you will not be able to purchase stamps (upload your own data) or access the network at a higher speed that would require bandwidth payments.
+1. Get your node's gnosis chain address from the [dashboard](http://dashboard.swarm.public.dappnode/#/status). (Click the drop-down 'Connection to Blockchain').
+2. Send `xDai` and `xBZZ` as required to your node's wallet. There's a [great guide](https://mirror.xyz/mfw.rndlabs.eth/1jRBTu8TIoOdbOJ1Xu8bWQsvYLmE7jTZTHvB8QOx2f0) on how much you may want to send, and how to go about purchasing `xBZZ`.
 
 ### Staking
 
-Since `bee` version `1.10.0`, storage incentives have been activated for staking. The minimum to stake is `10 xBZZ`. Transfer this amount to your node's wallet, and then you may execute the stake by using the following shell command:
+Since `bee` version `1.10.0`, storage incentives have been activated for staking. The minimum to stake is `10 xBZZ`. Transfer this amount to your node's wallet using the methods above, and then you may execute the stake by using the following shell command:
 
 ```bash
 curl http://bee.swarm.public.dappnode:1635/stake/100000000000000000 -X POST
@@ -66,5 +46,6 @@ If you have questions about Swarm on DAppNode, you may find @mfw78 on both the [
 
 Sites that may be of interest:
 
+* [OpenBZZ](http://bee.swarm.public.dappnode:1633/bzz/f2df005a24e39674e8f9ab80e81548a00224c89a109bf47a8bdb0448d9da7460/) (no ENS resolver configured), or [OpenBZZ](http://bee.swarm.public.dappnode:1633/bzz/openbzz.eth/) (with ENS resolver configured).
 * [Wikipedia on Swarm](http://bee.swarm.public.dappnode:1633/bzz/dwikipedia.eth/)
 * [OpenStreetMap](http://bee.swarm.public.dappnode:1633/bzz/fdfd170f73953bc262d936d3a5329b787980335dc0547032bb2a6239ebe95a76/)
