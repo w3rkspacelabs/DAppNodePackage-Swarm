@@ -1,6 +1,6 @@
 version: "2"
 fields:
-  - title: Swap RPC Endpoint (Gnosis Chain)
+  - title: Blockchain RPC Endpoint
     id: swap-endpoint
     description: >-
       Ethereum blockchain endpoint used for on-chain activities. Specify a custom RPC endpoint, or install one of the following packages:
@@ -8,7 +8,7 @@ fields:
       - Nethermind xDai [Install link](http://my.dappnode/#/installer/nethermind-xdai.dnp.dappnode.eth)
     target:
       type: environment
-      name: BEE_SWAP_ENDPOINT
+      name: BEE_BLOCKCHAIN_RPC_ENDPOINT
       service: bee
     required: true
   - title: ENS resolver RPC (Ethereum mainnet)
@@ -18,9 +18,9 @@ fields:
 
       - Geth [Install link](http://my.dappnode/#/installer/geth.dnp.dappnode.eth)
 
-      - Nethermind [Install link](http://my.dappnode/#/installer/nethermind.public.dappnode.eth)
-
       - Erigon [Install link](http://my.dappnode/#/installer/erigon.dnp.dappnode.eth)
+
+      - Nethermind [Install link](http://my.dappnode/#/installer/nethermind.public.dappnode.eth)
     target:
       type: environment
       name: BEE_RESOLVER_OPTIONS
