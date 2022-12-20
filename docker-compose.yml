@@ -11,9 +11,8 @@ services:
     volumes:
       - "bee-data:/home/bee/.bee"
     environment:
-      BEE_SWAP_ENDPOINT: "http://nethermind-xdai.dappnode:8545"
+      BEE_BLOCKCHAIN_RPC_ENDPOINT: "http://nethermind-xdai.dappnode:8545"
       BEE_RESOLVER_OPTIONS: "http://erigon.dappnode:8545"
-      BEE_SWAP_INITIAL_DEPOSIT: "10000000000000000"
       BEE_FULL_NODE: "true"
       BEE_DEBUG_API_ENABLE: "true"
       BEE_CORS_ALLOWED_ORIGINS: "*"
