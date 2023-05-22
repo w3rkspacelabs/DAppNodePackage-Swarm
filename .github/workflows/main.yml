@@ -15,7 +15,10 @@ jobs:
     name: Build test
     if: github.event_name != 'push'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - run: npx @dappnode/dappnodesdk build --skip_save
 
   release:
@@ -23,7 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - name: Publish
         run: npx @dappnode/dappnodesdk publish patch --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
         env:
