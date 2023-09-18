@@ -5,7 +5,7 @@ services:
     build:
       context: bee
       args:
-        UPSTREAM_VERSION: v1.17.3
+        UPSTREAM_VERSION: v1.17.4-rc1
     ports:
       - "1634:1634"
     volumes:
