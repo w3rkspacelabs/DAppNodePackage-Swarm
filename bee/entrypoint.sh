@@ -6,4 +6,8 @@ if ! test -f /home/bee/.bee/password; then
     chown bee:bee /home/bee/.bee/password
 fi
 
-exec bee start ${EXTRA_OPTS}
+if [ "${BEE_NUKE_DB}" = "true" ]; then
+    exec bee db nuke --data-dir /home/bee/.bee
+else
+    exec bee start ${EXTRA_OPTS}
+fi
