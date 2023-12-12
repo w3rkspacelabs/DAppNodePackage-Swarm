@@ -26,13 +26,9 @@ If you wish to receive rewards for providing storage, you can *stake* `xBZZ` to 
 
 ### Staking
 
-Since `bee` version `1.10.0`, storage incentives have been activated for staking. The minimum to stake is `10 xBZZ`. Transfer this amount to your node's wallet using the methods above, and then you may execute the stake by using the following shell command:
+Since `bee` version `1.10.0`, storage incentives have been activated for staking. The minimum to stake is `10 xBZZ`. Transfer at least this amount to your node's wallet using the methods above, and then you goto the Bee dashboard (shown below) to use a UI for staking your node in the storage incentives competition.
 
-```bash
-curl http://bee.swarm.public.dappnode:1635/stake/100000000000000000 -X POST
-```
-
-The above parameter specifies 10 `xBZZ` in it's atomic units. **CAUTION:** Remember that BZZ uses **16 decimals**.
+**CAUTION:** Remember that BZZ uses **16 decimals**.
 
 ### Bee Dashboard
 
