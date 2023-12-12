@@ -44,6 +44,36 @@ fields:
       - "true"
       - "false"
     required: true
+  - title: Enable SWAP Incentives
+    id: enable-swap
+    description: SWAP bandwidth incentives allow for compensating bandwidth for serving data.
+    target:
+      type: environment
+      name: BEE_SWAP_ENABLE
+      service: bee
+    enum:
+      - "true"
+      - "false"
+    required: true
+  - title: Set target neighborhood
+    id: target-neighborhood
+    description: >-
+      Define a target neighbourhood in which to mine an overlay address. This is a complex undertaking, and it's recommended that you read the bee documentation https://docs.ethswarm.org/docs/bee/installation/install#set-target-neighborhood-optional
+    target:
+      type: environment
+      name: BEE_TARGET_NEIGHBORHOOD
+      service: bee
+  - title: Nuke database
+    id: nuke-db
+    description: >-
+      **DANGER**: Enabling this will nuke your localstore database
+    target:
+      type: environment
+      name: BEE_NUKE_DB
+      service: bee
+    enum:
+      - "true"
+      - "false"
   - id: swarmDataMountpoint
     target:
       type: allNamedVolumesMountpoint
