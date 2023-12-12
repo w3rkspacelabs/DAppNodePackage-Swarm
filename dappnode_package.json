@@ -49,6 +49,14 @@
       "path": "/home/bee/.bee/localstore"
     },
     {
+      "name": "stamperstore",
+      "path": "/home/bee/.bee/stamperstore"
+    },
+    {
+      "name": "kademlia-metrics",
+      "path": "/home/bee/.bee/kademlia-metrics"
+    },
+    {
       "name": "password",
       "path": "/home/bee/.bee/password"
     }
