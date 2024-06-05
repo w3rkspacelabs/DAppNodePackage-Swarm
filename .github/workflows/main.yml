@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npx @dappnode/dappnodesdk@0.3.6 build --skip_save
+      - run: npx @dappnode/dappnodesdk@0.3.22 build --skip_save
 
   release:
     name: Release
@@ -31,9 +31,9 @@ jobs:
         with:
           node-version: 18
       - name: Publish
-        run: npx @dappnode/dappnodesdk@0.3.6 publish patch --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
+        run: npx @dappnode/dappnodesdk@0.3.22 publish patch --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
           PINATA_SECRET_API_KEY: ${{ secrets.PINATA_SECRET_API_KEY }}
-          DEVELOPER_ADDRESS: "0xE618050F1adb1F6bb7d03A3484346AC42F3E71EE"
+          DEVELOPER_ADDRESS: "0xdAD64d07A318476dc48257a0bB53a8e9a26C6B33"
