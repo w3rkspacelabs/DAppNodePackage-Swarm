@@ -1,6 +1,6 @@
 {
   "name": "swarm.public.dappnode.eth",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "upstreamVersion": "v2.1.0",
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
