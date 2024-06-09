@@ -9,8 +9,9 @@
   "type": "service",
   "mainService": "bee",
   "architectures": ["linux/amd64"],
-  "author": "rndlabs <packages@rndlabs.xyz> (https://github.com/rndlabs)",
+  "author": "rampall <rameshpallikara@gmail.com> (https://github.com/rampall)",
   "contributors": [
+    "rampall <rameshpallikara@gmail.com> (https://github.com/rampall)",
     "mfw78 <mfw78@rndlabs.xyz> (https://github.com/mfw78)",
     "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
     "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
@@ -20,10 +21,10 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rndlabs/DAppNodePackage-swarm.git"
+    "url": "https://github.com/rampall/DAppNodePackage-swarm.git"
   },
   "bugs": {
-    "url": "https://github.com/rndlabs/DAppNodePackage-swarm/issues"
+    "url": "https://github.com/rampall/DAppNodePackage-swarm/issues"
   },
   "requirements": {
     "minimumDappnodeVersion": "0.2.29"
