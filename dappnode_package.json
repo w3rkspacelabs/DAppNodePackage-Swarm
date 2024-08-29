@@ -4,7 +4,7 @@
   "upstreamVersion": "v2.1.0",
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
-  "description": "[Swarm](https://www.ethswarm.org/) is an **incentivised**, decentralised data storage and distribution technology. With *research driven development*, Swarm achieves alignment between node operators and content publishers, ushering in the next generation of censorship-resistant, unstoppable, serverless dapps.\n\n\nLearn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
+  "description": "[Swarm](https://www.ethswarm.org/) is a decentralised data storage and distribution technology. Ready to power the next generation of censorship-resistant, unstoppable, serverless dapps.\n\n\nBy running a Swarm node on Dappnode, you help build a resilient, serverless web while **being rewarded with BZZ tokens** for your participation.\n\n\nLearn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
   "shortDescription": "Get rewarded for supporting the Swarm network with your free storage and bandwidth.",
   "type": "service",
   "mainService": "bee",
