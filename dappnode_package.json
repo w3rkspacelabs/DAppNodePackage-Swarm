@@ -1,7 +1,7 @@
 {
   "name": "swarm.public.dappnode.eth",
-  "version": "1.0.24",
-  "upstreamVersion": "v2.1.0",
+  "version": "2.0.0",
+  "upstreamVersion": "v2.2.0",
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
   "description": "[Swarm](https://www.ethswarm.org/) is a decentralised data storage and distribution technology. Ready to power the next generation of censorship-resistant, unstoppable, serverless dapps.\n\n\nBy running a Swarm node on Dappnode, you help build a resilient, serverless web while **being rewarded with BZZ tokens** for your participation.\n\n\nLearn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
@@ -9,9 +9,9 @@
   "type": "service",
   "mainService": "bee",
   "architectures": ["linux/amd64"],
-  "author": "rampall <rameshpallikara@gmail.com> (https://github.com/rampall)",
+  "author": "w3rkspace labs <packages@w3rkspacelabs.org> (https://github.com/w3rkspacelabs)",
   "contributors": [
-    "rampall <rameshpallikara@gmail.com> (https://github.com/rampall)",
+    "rampall <rampall@w3rkspacelabs.com> (https://github.com/rampall)",
     "mfw78 <mfw78@rndlabs.xyz> (https://github.com/mfw78)",
     "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
     "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
@@ -21,10 +21,10 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rampall/DAppNodePackage-swarm.git"
+    "url": "https://github.com/w3rkspacelabs/dappnodepackage-swarm.git"
   },
   "bugs": {
-    "url": "https://github.com/rampall/DAppNodePackage-swarm/issues"
+    "url": "https://github.com/w3rkspacelabs/dappnodepackage-swarm/issues"
   },
   "requirements": {
     "minimumDappnodeVersion": "0.2.29"
@@ -33,7 +33,6 @@
     "homepage": "https://www.ethswarm.org/",
     "ui": "http://dashboard.swarm.public.dappnode/",
     "api": "http://bee.swarm.public.dappnode:1633/",
-    "Debug API": "http://bee.swarm.public.dappnode:1635/peers",
     "Swarm Documentation": "https://docs.ethswarm.org/"
   },
   "backup": [
