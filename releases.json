@@ -18,9 +18,9 @@
     }
   },
   "2.0.0": {
-    "hash": "/ipfs/QmX5hMS6xSiv627BbdCqZZoGztkA7jYWGpfLXYUwWbSZKc",
+    "hash": "/ipfs/QmURRPvdHzFxotXiKejYV7Z388NmVCdCHmRT1KktKfiRSR",
     "uploadedTo": {
-      "http://ipfs.dappnode:5001/": "Sat, 28 Sep 2024 23:55:26 GMT"
+      "dappnode": "Mon, 30 Sep 2024 23:59:20 GMT"
     }
   }
 }
