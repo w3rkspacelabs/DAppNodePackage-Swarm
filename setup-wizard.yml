@@ -33,6 +33,13 @@ fields:
       type: environment
       name: BEE_WELCOME_MESSAGE
       service: bee
+  - title: Bee API address
+    id: api-addr
+    description: Bee API URL
+    target:
+      type: environment
+      name: BEE_API_ADDR
+      service: bee
   - title: Full Node Mode
     id: full-node
     description: Enable the full node mode, if you remove this field, you will run the node in light mode, you can obtain more info about it in bee documentation https://docs.ethswarm.org/docs/access-the-swarm/light-nodes
@@ -63,20 +70,55 @@ fields:
       type: environment
       name: BEE_TARGET_NEIGHBORHOOD
       service: bee
-  - title: Nuke database
-    id: nuke-db
+  - title: Log messages verbosity level
+    id: log-verbosity
     description: >-
-      **DANGER**: Enabling this will nuke your localstore database
+      Set logging verbosity level
     target:
       type: environment
-      name: BEE_NUKE_DB
+      name: BEE_VERBOSITY
       service: bee
     enum:
-      - "true"
-      - "false"
-  - id: swarmDataMountpoint
+      - "silent"
+      - "error"
+      - "warn"
+      - "info"
+      - "debug"
+      - "trace"
+  - title: Perform database action
+    id: db-action
+    description: >-
+      **DANGER**: Some actions such as **nuke**, **compact** and **repair-reserve** are destructive actions. If the process is stopped for any reason, the localstore may become corrupted. It is recommended that you [backup](http://my.dappnode/packages/my/swarm.public.dappnode.eth/backup) first.
+
+      - **none**: Do nothing. Start the bee node by default.
+
+      - **nuke**: Enabling this will nuke your localstore database. Bee will resync all data next time it boots up.
+
+      - **compact**: Compacts the localstore sharky store. Compaction is a destructive process. If the process is stopped for any reason, the localstore may become corrupted.
+
+      - **repair-reserve**: Repairs the reserve by resetting the binIDs and removes dangling entries. This is a destructive process. If the process is stopped for any reason, the reserve may become corrupted.
+
+      - **info**: Prints the different indexes present in the Database.
+
+      - **validate**: Validates the localstore sharky store.
+
+      - **validate-pin**: Validates pin collection chunks with sharky store.
+
+    target:
+      type: environment
+      name: BEE_DB_ACTION
+      service: bee
+    enum:
+      - "none"
+      - "nuke"
+      - "compact"
+      - "repair-reserve"
+      - "info"
+      - "validate"
+      - "validate-pin"
+  - title: Storage data mountpoint
+    id: swarmDataMountpoint
     target:
       type: allNamedVolumesMountpoint
-    title: Storage data mountpoint
     description: >-
       Use this option if you want to store the Storage data in a separate drive. Make sure to have sufficient free space
