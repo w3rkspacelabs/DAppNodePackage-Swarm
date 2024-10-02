@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 18
       - name: Publish
-        run: npx @dappnode/dappnodesdk@0.3.22 publish patch --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
+        run: npx @dappnode/dappnodesdk@0.3.22 publish ${{ github.event.inputs.version_type }} --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
