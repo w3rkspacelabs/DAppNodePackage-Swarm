@@ -1,6 +1,16 @@
 name: "Main"
 on:
   workflow_dispatch:
+    inputs:
+      version_type:
+        type: choice
+        description: 'Type of version increment: patch, minor, or major'
+        required: true
+        default: patch
+        options:
+        - patch
+        - minor
+        - major
 
 jobs:
   build-test:
