@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   bee:
-    image: "bee.swarm.public.dappnode.eth:2.1.0"
+    image: "bee.swarm.public.dappnode.eth:2.2.0"
     build:
       context: bee
       args:
@@ -26,7 +26,7 @@ services:
       EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
-    image: "dashboard.swarm.public.dappnode.eth:2.1.0"
+    image: "dashboard.swarm.public.dappnode.eth:2.2.0"
     build:
       context: dashboard
     restart: unless-stopped
