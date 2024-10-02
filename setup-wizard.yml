@@ -1,9 +1,9 @@
 version: "2"
 fields:
-  - title: Blockchain RPC Endpoint
+  - title: Gnosis RPC Endpoint
     id: swap-endpoint
     description: >-
-      Ethereum blockchain endpoint used for on-chain activities. Specify a custom RPC endpoint, or install one of the following packages:
+      Gnosis blockchain endpoint used for on-chain activities. Specify a custom Gnosis RPC endpoint, or install one of the following packages:
 
       - Nethermind xDai [Install link](http://my.dappnode/#/installer/nethermind-xdai.dnp.dappnode.eth)
     target:
