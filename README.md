@@ -25,6 +25,7 @@ Connect to your Dappnode through Wireguard or OpenVPM
 
 #### Step 1. Visit the install link and wait for the package to load.
  - http://my.dappnode/installer/dnp/swarm.public.dappnode.eth
+
 #### Step 2: Fix the "Not Signed" red flag
 To fix the "Not Signed" red flag ("Unsafe origin, not signed"), you will need to add w3rkspacelab's key `0xdAD64d07A318476dc48257a0bB53a8e9a26C6B33` to the "Release trusted keys" on dappnode.
 
@@ -52,8 +53,8 @@ To fix the "Not Signed" red flag ("Unsafe origin, not signed"), you will need to
 ## Development & Testing
 
 ```
-git clone https://github.com/w3rkspacelabs/dappnodepackage-swarm
-cd dappnodepackage-swarm
+git clone https://github.com/w3rkspacelabs/DAppNodePackage-Swarm
+cd DAppNodePackage-Swarm
 ```
 
 ### Building the package
@@ -68,14 +69,14 @@ npx dappnodesdk build --provider http://ipfs.dappnode:5001/
 ```
 (node:88443) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
-Validating files for swarm.public.dappnode.eth (version 2.0.0)
+Validating files for swarm.public.dappnode.eth (version 2.1.0)
   ⠙ Validate files
   ✔ Validate files
   ✔ Validate files
   ✔ Verify connection
   ✔ Create release directories
   ✔ Copy files to release directory
-  ✔ Build swarm.public.dappnode.eth (version 2.0.0) for arch linux/amd64
+  ✔ Build swarm.public.dappnode.eth (version 2.1.0) for arch linux/amd64
   ✔ Upload release for swarm.public.dappnode.eth to IPFS node
   ✔ Save upload results
 
