@@ -90,8 +90,10 @@ Open the IPFS url in the last line to install and test your package.
 
 ## Publishing your package
 
+**VERSION-TYPE** can be 'patch', 'minor' or 'major
+
 ```
-npx dappnodesdk publish --provider dappnode
+npx dappnodesdk publish <VERSION-TYPE> --provider dappnode
 ```
 
 ## Troubleshooting common issues
