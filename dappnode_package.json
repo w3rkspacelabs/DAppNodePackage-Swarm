@@ -1,7 +1,7 @@
 {
   "name": "swarm.public.dappnode.eth",
-  "version": "2.2.1",
-  "upstreamVersion": "v2.2.0",
+  "version": "2.3.0",
+  "upstreamVersion": "v2.3.0",
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
   "description": "[Swarm](https://www.ethswarm.org/) is a decentralised data storage and distribution technology. Ready to power the next generation of censorship-resistant, unstoppable, serverless dapps.\n\n\nBy running a Swarm node on Dappnode, you help build a resilient, serverless web while **being rewarded with BZZ tokens** for your participation.\n\n\nLearn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",

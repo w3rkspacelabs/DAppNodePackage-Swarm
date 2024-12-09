@@ -69,14 +69,14 @@ npx dappnodesdk build --provider http://ipfs.dappnode:5001/
 ```
 (node:88443) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
-Validating files for swarm.public.dappnode.eth (version 2.2.1)
+Validating files for swarm.public.dappnode.eth (version x.y.z)
   ⠙ Validate files
   ✔ Validate files
   ✔ Validate files
   ✔ Verify connection
   ✔ Create release directories
   ✔ Copy files to release directory
-  ✔ Build swarm.public.dappnode.eth (version 2.2.1) for arch linux/amd64
+  ✔ Build swarm.public.dappnode.eth (version x.y.z) for arch linux/amd64
   ✔ Upload release for swarm.public.dappnode.eth to IPFS node
   ✔ Save upload results
 

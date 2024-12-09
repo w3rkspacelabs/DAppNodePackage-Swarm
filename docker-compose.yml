@@ -1,32 +1,33 @@
 version: "3.4"
 services:
   bee:
-    image: "bee.swarm.public.dappnode.eth:2.2.1"
+    image: bee.swarm.public.dappnode.eth:2.3.0
     build:
       context: bee
       args:
-        UPSTREAM_VERSION: v2.2.0
+        UPSTREAM_VERSION: v2.3.0
     ports:
       - "1634:1634"
     volumes:
-      - "bee-data:/home/bee/.bee"
+      - bee-data:/home/bee/.bee
     environment:
       BEE_API_ADDR: ":1633"
-      BEE_BLOCKCHAIN_RPC_ENDPOINT: "http://nethermind-xdai.dappnode:8545"
-      BEE_RESOLVER_OPTIONS: "http://erigon.dappnode:8545"
+      BEE_BLOCKCHAIN_RPC_ENDPOINT: http://nethermind-xdai.dappnode:8545
+      BEE_RESOLVER_OPTIONS: http://erigon.dappnode:8545
       BEE_FULL_NODE: "true"
       BEE_DEBUG_API_ENABLE: "true"
       BEE_SWAP_ENABLE: "true"
       BEE_TARGET_NEIGHBORHOOD: ""
-      BEE_VERBOSITY: "info"
+      BEE_VERBOSITY: info
+      BEE_RESERVE_CAPACITY_DOUBLING: "0"
       BEE_CORS_ALLOWED_ORIGINS: "*"
-      BEE_WELCOME_MESSAGE: "Swarming on DAppNode \U0001F41D"
+      BEE_WELCOME_MESSAGE: Swarming on DAppNode 🐝
       BEE_PASSWORD_FILE: /home/bee/.bee/password
-      BEE_DB_ACTION: "none"
+      BEE_DB_ACTION: none
       EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
-    image: "dashboard.swarm.public.dappnode.eth:2.2.1"
+    image: dashboard.swarm.public.dappnode.eth:2.3.0
     build:
       context: dashboard
     restart: unless-stopped

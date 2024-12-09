@@ -85,6 +85,18 @@ fields:
       - "info"
       - "debug"
       - "trace"
+  - title: Reserve Capacity Doubling
+    id: reserve-capacity-doubling
+    description: >-
+      Set Reserve Capacity Doubling
+    target:
+      type: environment
+      name: BEE_RESERVE_CAPACITY_DOUBLING
+      service: bee
+    enum:
+      - "0"
+      - "1"
+    required: true
   - title: Perform database action
     id: db-action
     description: >-
