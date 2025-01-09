@@ -7,7 +7,7 @@ FROM debian:11-slim as base
 ARG TARGETARCH
 ARG UPSTREAM_VERSION
 
-# Get bee v2.3.1
+# Get bee v2.3.2
 ENV DOWNLOAD_URL https://github.com/ethersphere/bee/releases/download
 
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget; \
@@ -33,7 +33,7 @@ COPY entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/bee && \
     chmod +x /usr/local/bin/entrypoint.sh
 
-EXPOSE 1633 1634 1635
+EXPOSE 1633 1634
 USER bee
 WORKDIR /home/bee
 VOLUME /home/bee/.bee
