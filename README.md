@@ -61,6 +61,11 @@ cd DAppNodePackage-Swarm
 
 **Note:** Make sure `docker` or Docker desktop is running.
 
+#### Test Build
+```
+npx dappnodesdk build --skip-upload
+```
+#### Build and Upload
 ```
 npx dappnodesdk build --provider http://ipfs.dappnode:5001/
 ```
