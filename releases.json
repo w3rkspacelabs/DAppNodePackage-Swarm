@@ -42,5 +42,12 @@
       "dappnode": "Thu, 09 Jan 2025 10:37:51 GMT"
     },
     "link": "https://dappnode.github.io/sdk-publish/?r=swarm.public.dappnode.eth&v=2.3.2&h=%2Fipfs%2FQmPBiccyKwR9gjE8MRD5rgGqYHGABcuJfEgPFydQCkwixu"
+  },
+  "2.4.0": {
+    "hash": "/ipfs/Qme9qPTz8inPPHA5U76dnHnaPF3ZMBqB49HQMbHkYJuPhh",
+    "uploadedTo": {
+      "dappnode": "Thu, 30 Jan 2025 00:23:04 GMT"
+    },
+    "link": "https://dappnode.github.io/sdk-publish/?r=swarm.public.dappnode.eth&v=2.4.0&h=%2Fipfs%2FQme9qPTz8inPPHA5U76dnHnaPF3ZMBqB49HQMbHkYJuPhh"
   }
 }

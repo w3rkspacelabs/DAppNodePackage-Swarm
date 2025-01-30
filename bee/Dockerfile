@@ -7,7 +7,7 @@ FROM debian:11-slim as base
 ARG TARGETARCH
 ARG UPSTREAM_VERSION
 
-# Get bee v2.3.2
+# Get bee v2.4.0
 ENV DOWNLOAD_URL https://github.com/ethersphere/bee/releases/download
 
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget; \
