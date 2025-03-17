@@ -48,6 +48,13 @@
     "uploadedTo": {
       "dappnode": "Thu, 30 Jan 2025 00:23:04 GMT"
     },
-    "link": "https://dappnode.github.io/sdk-publish/?r=swarm.public.dappnode.eth&v=2.4.0&h=%2Fipfs%2FQme9qPTz8inPPHA5U76dnHnaPF3ZMBqB49HQMbHkYJuPhh"
+    "link": "https://dappnode.github.io/sdk-publish/?r=swarm.public.dappnode.eth&v=2.5.0&h=%2Fipfs%2FQme9qPTz8inPPHA5U76dnHnaPF3ZMBqB49HQMbHkYJuPhh"
+  },
+  "2.5.0": {
+    "hash": "/ipfs/QmPWibxGsUNoVAGQiRWnTAqGB5WSTBEJ95MaJJK8fBcH8i",
+    "uploadedTo": {
+      "dappnode": "Mon, 17 Mar 2025 02:32:34 GMT"
+    },
+    "link": "https://dappnode.github.io/sdk-publish/?r=swarm.public.dappnode.eth&v=2.5.0&h=%2Fipfs%2FQmPWibxGsUNoVAGQiRWnTAqGB5WSTBEJ95MaJJK8fBcH8i"
   }
 }
