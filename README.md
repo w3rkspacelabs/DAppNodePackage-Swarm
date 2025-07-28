@@ -16,6 +16,18 @@ Bee is a Swarm client implemented in Go. It’s the basic building block for the
 
 You can get more information about the project on his official site https://www.ethswarm.org/
 
+## Setup Environment
+
+### Requirements
+
+- Latest `nvm`, `node` and `npm`
+
+### Install dappnodesdk
+
+```
+npm install -g @dappnode/dappnodesdk
+``` 
+
 ## Installing the package
 
 ### Connect
@@ -63,11 +75,11 @@ cd DAppNodePackage-Swarm
 
 #### Test Build
 ```
-npx dappnodesdk build --skip-upload
+dappnodesdk build --skip-upload
 ```
 #### Build and Upload
 ```
-npx dappnodesdk build --provider http://ipfs.dappnode:5001/
+dappnodesdk build --provider http://ipfs.dappnode:5001/
 ```
 
 **Output:**
@@ -98,7 +110,7 @@ Open the IPFS url in the last line to install and test your package.
 **VERSION-TYPE** can be 'patch', 'minor' or 'major
 
 ```
-npx dappnodesdk publish <VERSION-TYPE> --provider dappnode
+npx dappnodesdk publish <VERSION-TYPE> --eth-provider <YOUR-ETH-RPC>
 ```
 
 ## Troubleshooting common issues
