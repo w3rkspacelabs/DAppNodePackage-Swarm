@@ -5,6 +5,7 @@ on:
     - cron: "00 */4 * * *"
   push:
     branches:
+      - "master"
       - "main"
 
 jobs:
@@ -12,10 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npx @dappnode/dappnodesdk@0.3.6 github-action bump-upstream --timeout 2h
+      - run: npx @dappnode/dappnodesdk github-action bump-upstream
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}

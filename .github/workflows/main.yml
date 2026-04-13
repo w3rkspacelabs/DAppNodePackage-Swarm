@@ -1,5 +1,12 @@
 name: "Main"
 on:
+  pull_request:
+  push:
+    branches:
+      - "master"
+      - "main"
+    paths-ignore:
+      - "README.md"
   workflow_dispatch:
     inputs:
       version_type:
@@ -22,20 +29,22 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npx @dappnode/dappnodesdk@0.3.22 build --skip_save
+      - run: npx @dappnode/dappnodesdk build --skip_save
 
   release:
     name: Release
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
       - name: Publish
-        run: npx @dappnode/dappnodesdk@0.3.22 publish ${{ github.event.inputs.version_type }} --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
         env:
+          VERSION_TYPE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.version_type || 'patch' }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
           PINATA_SECRET_API_KEY: ${{ secrets.PINATA_SECRET_API_KEY }}
           DEVELOPER_ADDRESS: "0xdAD64d07A318476dc48257a0bB53a8e9a26C6B33"
+        run: npx @dappnode/dappnodesdk publish $VERSION_TYPE --github-release --eth_provider=${{ secrets.ETH_PROVIDER }} --content_provider=pinata
