@@ -6,7 +6,21 @@ if ! test -f /home/bee/.bee/password; then
     chown bee:bee /home/bee/.bee/password
 fi
 
+DEFAULT_BLOCKCHAIN_RPC_ENDPOINT="${DEFAULT_BLOCKCHAIN_RPC_ENDPOINT:-http://nethermind-xdai.dappnode:8545}"
+BLOCKCHAIN_RPC_ENDPOINT="${BEE_BLOCKCHAIN_RPC_ENDPOINT}"
+
+if [ -z "${BLOCKCHAIN_RPC_ENDPOINT}" ]; then
+    if [ "${BEE_FULL_NODE}" = "true" ] || [ "${BEE_SWAP_ENABLE}" = "true" ]; then
+        BLOCKCHAIN_RPC_ENDPOINT="${DEFAULT_BLOCKCHAIN_RPC_ENDPOINT}"
+        echo "BEE_BLOCKCHAIN_RPC_ENDPOINT is empty; using ${BLOCKCHAIN_RPC_ENDPOINT}"
+    fi
+fi
+
 if [  "${BEE_DB_ACTION}" = "none" ]; then
+    unset BEE_BLOCKCHAIN_RPC_ENDPOINT
+    if [ -n "${BLOCKCHAIN_RPC_ENDPOINT}" ]; then
+        exec bee start --blockchain-rpc-endpoint="${BLOCKCHAIN_RPC_ENDPOINT}" ${EXTRA_OPTS}
+    fi
     exec bee start ${EXTRA_OPTS}
 else
     if [ "${BEE_DB_ACTION}" = "nuke" ]; then

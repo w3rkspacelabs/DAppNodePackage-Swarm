@@ -1,16 +1,14 @@
 {
   "name": "swarm.dnp.dappnode.eth",
-  "version": "1.0.0",
-  "upstreamVersion": "v2.7.0",
+  "version": "1.1.0",
+  "upstreamVersion": "v2.8.0",
   "upstreamRepo": "ethersphere/bee",
   "upstreamArg": "UPSTREAM_VERSION",
-  "description": "[Swarm](https://www.ethswarm.org/) is a decentralised data storage and distribution technology. Ready to power the next generation of censorship-resistant, unstoppable, serverless dapps.\n\n\nBy running a Swarm node on Dappnode, you help build a resilient, serverless web while **being rewarded with BZZ tokens** for your participation.\n\n\nLearn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
+  "description": "[Swarm](https://www.ethswarm.org/) is a decentralised data storage and distribution technology. Ready to power the next generation of censorship-resistant, unstoppable, serverless dapps.\n\n\nBy running a Swarm node on Dappnode, you help build a resilient, serverless web while **being rewarded with BZZ tokens** for your participation.\n\n\nLearn about all you can do today with Swarm in the [Swarm documentation](https://docs.ethswarm.org/).",
   "shortDescription": "Get rewarded for supporting the Swarm network with your free storage and bandwidth.",
   "type": "service",
   "mainService": "bee",
-  "architectures": [
-    "linux/amd64"
-  ],
+  "architectures": ["linux/amd64"],
   "author": "w3rkspace labs <packages@w3rkspacelabs.org> (https://github.com/w3rkspacelabs)",
   "contributors": [
     "rampall <rampall@w3rkspacelabs.com> (https://github.com/rampall)",
@@ -19,10 +17,7 @@
     "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
     "Tropicar (https://github.com/tropicar)"
   ],
-  "categories": [
-    "Storage",
-    "Communications"
-  ],
+  "categories": ["Storage", "Communications"],
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
@@ -36,8 +31,8 @@
   },
   "links": {
     "homepage": "https://www.ethswarm.org/",
-    "ui": "http://dashboard.swarm.public.dappnode/",
-    "api": "http://bee.swarm.public.dappnode:1633/",
+    "ui": "http://dashboard.swarm.dappnode/",
+    "api": "http://bee.swarm.dappnode:1633/",
     "Swarm Documentation": "https://docs.ethswarm.org/"
   },
   "backup": [

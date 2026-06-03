@@ -4,5 +4,11 @@
     "uploadedTo": {
       "http://ipfs.dappnode:5001/": "Mon, 13 Apr 2026 12:28:56 GMT"
     }
+  },
+  "1.1.0": {
+    "hash": "/ipfs/QmRutiMndTzzGWFqGbduXP24QS9J1Woq6uKVUPhw1iPYxW",
+    "uploadedTo": {
+      "dappnode": "Wed, 03 Jun 2026 11:24:00 GMT"
+    }
   }
 }

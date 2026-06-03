@@ -1,5 +1,29 @@
 version: "2"
 fields:
+  - title: Migrating from the old Swarm package
+    id: migration-info
+    description: >-
+      **If you previously ran `swarm.public.dappnode.eth`**, migrate your existing data (keys, stakes, wallet) before starting this package. **If you skip this, your node will generate new keys and you could lose access to your funds.**
+
+
+      1. Stop the old Swarm package.
+
+      2. Copy the data by running this command on your DAppNode SSH terminal:
+
+
+      `docker run --rm -v swarmpublicdappnodeeth_bee-data:/source:ro -v swarmdnpdappnodeeth_bee-data:/target alpine sh -c "apk add --no-cache rsync && rsync -a --info=progress2 /source/ /target/ && chown -R 999:999 /target/"`
+
+
+      3. Start this package.
+
+
+      **If this is a fresh install**, skip this step.
+    target:
+      type: environment
+      name: MIGRATION_INFO
+      service: bee
+    enum:
+      - "none"
   - title: Gnosis RPC Endpoint
     id: swap-endpoint
     description: >-
@@ -100,7 +124,7 @@ fields:
   - title: Perform database action
     id: db-action
     description: >-
-      **DANGER**: Some actions such as **nuke**, **compact** and **repair-reserve** are destructive actions. If the process is stopped for any reason, the localstore may become corrupted. It is recommended that you [backup](http://my.dappnode/packages/my/swarm.public.dappnode.eth/backup) first.
+      **DANGER**: Some actions such as **nuke**, **compact** and **repair-reserve** are destructive actions. If the process is stopped for any reason, the localstore may become corrupted. It is recommended that you [backup](http://my.dappnode/packages/my/swarm.dnp.dappnode.eth/backup) first.
 
       - **none**: Do nothing. Start the bee node by default.
 
