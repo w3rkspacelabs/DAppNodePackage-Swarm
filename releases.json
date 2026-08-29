@@ -5,10 +5,10 @@
       "http://ipfs.dappnode:5001/": "Mon, 13 Apr 2026 12:28:56 GMT"
     }
   },
-  "1.1.0": {
-    "hash": "/ipfs/QmX1NVVNMkgS1qtfwCagDnvy7tBzrZgToJjWFnJ7CZ3hJz",
+  "1.1.2": {
+    "hash": "/ipfs/QmVaXQF1G1spFQiwK2q1ngv9DNrCm14vA4rnrvqNyBAkSb",
     "uploadedTo": {
-      "http://ipfs.dappnode:5001/": "Sat, 29 Aug 2026 11:11:03 GMT"
+      "http://ipfs.dappnode:5001/": "Sat, 29 Aug 2026 14:12:48 GMT"
     }
   }
 }
