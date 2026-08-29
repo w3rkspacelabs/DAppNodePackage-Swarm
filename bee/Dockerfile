@@ -1,5 +1,5 @@
 ##############
-# Base image # 
+# Base image #
 ##############
 
 FROM debian:11-slim as base
@@ -7,12 +7,12 @@ FROM debian:11-slim as base
 ARG TARGETARCH
 ARG UPSTREAM_VERSION
 
-# Get bee v2.8.0
+# Get bee v2.8.1
 ENV DOWNLOAD_URL https://github.com/ethersphere/bee/releases/download
 
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget; \
   wget $DOWNLOAD_URL/$UPSTREAM_VERSION/bee-linux-${TARGETARCH:-amd64} -O /usr/local/bin/bee && \
-  chmod +x /usr/local/bin/bee 
+  chmod +x /usr/local/bin/bee
 
 FROM debian:11-slim
 ENV DEBIAN_FRONTEND noninteractive
@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
 # make sure mounted volumes have correct permissions
 RUN mkdir -p /home/bee/.bee && chown 999:999 /home/bee/.bee
 
-# Get the binary from the base 
+# Get the binary from the base
 COPY --from=base /usr/local/bin/bee /usr/local/bin/bee
 
 COPY entrypoint.sh /usr/local/bin

@@ -1,11 +1,11 @@
 version: "3.4"
 services:
   bee:
-    image: bee.swarm.public.dappnode.eth:2.8.0
+    image: bee.swarm.public.dappnode.eth:2.8.1
     build:
       context: bee
       args:
-        UPSTREAM_VERSION: v2.8.0
+        UPSTREAM_VERSION: v2.8.1
     ports:
       - "1634:1634"
       - "1635:1635"
@@ -28,7 +28,7 @@ services:
       EXTRA_OPTS: ""
     restart: unless-stopped
   dashboard:
-    image: dashboard.swarm.public.dappnode.eth:2.8.0
+    image: dashboard.swarm.public.dappnode.eth:2.8.1
     build:
       context: dashboard
     restart: unless-stopped
